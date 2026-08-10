@@ -1,0 +1,31 @@
+<svg viewBox="0 0 460 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Closed loop from online decision to offline sale">
+  <defs>
+    <marker id="ah" markerWidth="9" markerHeight="9" refX="6" refY="4.5" orient="auto">
+      <path d="M0 0 L8 4.5 L0 9" fill="#9c7a2c"/>
+    </marker>
+  </defs>
+  <g stroke="#e7e2d8" stroke-width="1">
+    <line x1="20" y1="20" x2="440" y2="20"/>
+    <line x1="20" y1="360" x2="440" y2="360"/>
+  </g>
+  <text x="20" y="14" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.5" fill="#868a91">FIG. A — THE CLOSED LOOP</text>
+  <g>
+    <rect x="34" y="120" width="150" height="118" rx="3" fill="#f7f4ee" stroke="#e7e2d8"/>
+    <text x="50" y="146" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1" fill="#9c7a2c">ONLINE</text>
+    <path d="M92 168 l0 40 l11 -11 l7 15 l7 -3 l-7 -15 l16 0 z" fill="#17191e"/>
+    <text x="50" y="226" font-family="Hanken Grotesk, sans-serif" font-size="12.5" fill="#4b4f57">Configures. Enquires.</text>
+  </g>
+  <g>
+    <rect x="276" y="120" width="150" height="118" rx="3" fill="#17191e"/>
+    <text x="292" y="146" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1" fill="#c9a24b">OFFLINE</text>
+    <path d="M351 165 c-13 0 -23 10 -23 23 c0 16 23 34 23 34 c0 0 23 -18 23 -34 c0 -13 -10 -23 -23 -23 z" fill="none" stroke="#c9a24b" stroke-width="2"/>
+    <circle cx="351" cy="188" r="7" fill="#c9a24b"/>
+    <text x="292" y="243" font-family="Hanken Grotesk, sans-serif" font-size="12.5" fill="#d9d6ce">Showroom. Branch. Sale.</text>
+  </g>
+  <path d="M184 150 C 230 96, 300 96, 340 150" fill="none" stroke="#9c7a2c" stroke-width="2" marker-end="url(#ah)"/>
+  <text x="262" y="92" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#9c7a2c">decision</text>
+  <path d="M320 238 C 280 300, 200 300, 154 246" fill="none" stroke="#17191e" stroke-width="1.5" stroke-dasharray="2 5" marker-end="url(#ah)"/>
+  <text x="237" y="300" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#868a91">attributed back</text>
+  <rect x="150" y="330" width="160" height="22" rx="2" fill="#f5edda"/>
+  <text x="230" y="345" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1" fill="#9c7a2c">MEASURED · NOT MODELLED</text>
+</svg>

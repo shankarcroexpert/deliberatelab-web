@@ -1,0 +1,20 @@
+<svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrative closed-loop scorecard">
+  <text x="0" y="16" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.5" fill="#868a91">FIG. B — ONE HONEST SCORECARD  ·  ILLUSTRATIVE</text>
+  <line x1="0" y1="30" x2="480" y2="30" stroke="#e7e2d8"/>
+  <g font-family="Hanken Grotesk, sans-serif">
+    <text x="0" y="62" font-size="13" fill="#17191e" font-weight="600">Configurator — CTA reframe</text>
+    <text x="0" y="80" font-size="11.5" fill="#868a91" font-family="IBM Plex Mono, monospace">online CVR +9.4%  ·  attributed test-drives +6.1%</text>
+    <rect x="0" y="90" width="480" height="6" rx="3" fill="#f0ece3"/>
+    <rect x="0" y="90" width="300" height="6" rx="3" fill="#c9a24b"/>
+    <text x="0" y="132" font-size="13" fill="#17191e" font-weight="600">Finance page — trust rebuild</text>
+    <text x="0" y="150" font-size="11.5" fill="#868a91" font-family="IBM Plex Mono, monospace">enquiries +12.0%  ·  disbursed value +4.8%</text>
+    <rect x="0" y="160" width="480" height="6" rx="3" fill="#f0ece3"/>
+    <rect x="0" y="160" width="235" height="6" rx="3" fill="#c9a24b"/>
+    <text x="0" y="202" font-size="13" fill="#17191e" font-weight="600">Enquiry form — field reduction</text>
+    <text x="0" y="220" font-size="11.5" fill="#868a91" font-family="IBM Plex Mono, monospace">completion +5.2%  ·  no offline lift — flat</text>
+    <rect x="0" y="230" width="480" height="6" rx="3" fill="#f0ece3"/>
+    <rect x="0" y="230" width="70" height="6" rx="3" fill="#b9b4a8"/>
+  </g>
+  <line x1="0" y1="262" x2="480" y2="262" stroke="#e7e2d8"/>
+  <text x="0" y="284" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#4b4f57">We report the flat ones too. That’s the point.</text>
+</svg>
