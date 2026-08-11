@@ -29,7 +29,7 @@
       <a href="#insights">Insights</a>
     </nav>
     <div class="nav-cta">
-      <a href="#book" class="btn">Book a call <span class="arw">→</span></a>
+      <a href="#book" class="btn js-book-cta">Book a call <span class="arw">→</span></a>
       <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -43,7 +43,7 @@
       <h1>Your customers decide online. They buy <em>offline.</em> We prove what changed their mind.</h1>
       <p class="lead">Deliberate Lab runs research-led experimentation for high-consideration brands — automotive, real estate, BFSI, luxury and premium education — and measures the lift all the way to the offline sale.</p>
       <div class="cta-row">
-        <a href="#book" class="btn">Book a discovery call <span class="arw">→</span></a>
+        <a href="#book" class="btn js-book-cta">Book a discovery call <span class="arw">→</span></a>
         <a href="#loop" class="btn btn-ghost">See how we work</a>
       </div>
       <div class="foot-note">
@@ -288,7 +288,7 @@
     <span class="eyebrow" style="justify-content:center;margin-bottom:22px">Start the conversation</span>
     <h2>Ready to see what’s really moving your offline sales?</h2>
     <p class="lead">Start with a discovery call. If there’s a fit, the Deliberate Audit is your first step — and your roadmap is yours to keep either way.</p>
-    <a href="mailto:hello@deliberatelab.com" class="btn">Book a discovery call <span class="arw">→</span></a>
+    <a href="mailto:hello@deliberatelab.com" class="btn js-book-cta">Book a discovery call <span class="arw">→</span></a>
   </div>
 </section>
 
@@ -322,7 +322,7 @@
       <div class="f-col">
         <h4>Contact</h4>
         <a href="mailto:hello@deliberatelab.com">hello@deliberatelab.com</a>
-        <a href="#book">Book a call</a>
+        <a href="#book" class="js-book-cta">Book a call</a>
         <a href="#">LinkedIn</a>
       </div>
     </div>
@@ -332,6 +332,50 @@
     </div>
   </div>
 </footer>
+
+<!-- BOOK A CALL MODAL -->
+<div class="modal-overlay" id="bookModalOverlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="bookModalTitle">
+    <button type="button" class="modal-close" id="bookModalClose" aria-label="Close">&times;</button>
+
+    <div class="modal-brand">
+      <svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M9 2v7.2L3.4 19.1A2 2 0 0 0 5.1 22h13.8a2 2 0 0 0 1.7-2.9L15 9.2V2" stroke="#17191e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8 2h8" stroke="#17191e" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="12" cy="16.5" r="1.7" fill="#c9a24b"/>
+      </svg>
+      <span>Deliberate&nbsp;Lab</span>
+    </div>
+
+    <span class="eyebrow">Start the conversation</span>
+    <h3 id="bookModalTitle">Book a discovery call</h3>
+    <p class="modal-sub">Share your details and we’ll call you back within one business day.</p>
+
+    <form id="bookForm" novalidate>
+      <div class="field">
+        <label for="bookName">Name</label>
+        <input type="text" id="bookName" name="name" autocomplete="name" required placeholder="Your full name">
+        <span class="err" id="bookNameErr">Please enter your name.</span>
+      </div>
+      <div class="field">
+        <label for="bookPhone">Phone number</label>
+        <input type="tel" id="bookPhone" name="phone" autocomplete="tel" required placeholder="e.g. 98765 43210" inputmode="tel">
+        <span class="err" id="bookPhoneErr">Please enter a valid phone number.</span>
+      </div>
+
+      <!-- spam trap — left blank by humans, hidden from view -->
+      <div class="hp-field" aria-hidden="true">
+        <label for="bookCompany">Company</label>
+        <input type="text" id="bookCompany" name="company" tabindex="-1" autocomplete="off">
+      </div>
+
+      <button type="submit" class="btn modal-submit" id="bookSubmitBtn">
+        <span class="btn-txt">Book my call</span> <span class="arw">→</span>
+      </button>
+      <p class="modal-status" id="bookStatus" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
 
 <script src="js/main.js"></script>
 </body>

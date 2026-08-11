@@ -1,4 +1,8 @@
 /* Deliberate Lab — shared site scripts (loaded by every page) */
+
+/* Paste the Google Apps Script Web App URL here once deployed (see setup notes). */
+var GOOGLE_SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbxyqdBEAaQKp03K0gSF7gjgpU8VvFph-E3BL7giRJUISO63Jdk4JGJCKJa2ZhMUvPg/exec";
+
 (function(){
   // sticky-nav hairline on scroll
   var hdr=document.getElementById('hdr');
@@ -28,5 +32,159 @@
     reveals.forEach(function(el){io.observe(el);});
   }else{
     reveals.forEach(function(el){el.classList.add('in');});
+  }
+})();
+
+/* Book a call — modal + Google Sheet submit */
+(function(){
+  var overlay=document.getElementById('bookModalOverlay');
+  var form=document.getElementById('bookForm');
+  if(!overlay||!form) return;
+
+  var closeBtn=document.getElementById('bookModalClose');
+  var nameInput=document.getElementById('bookName');
+  var phoneInput=document.getElementById('bookPhone');
+  var companyInput=document.getElementById('bookCompany');
+  var nameErr=document.getElementById('bookNameErr');
+  var phoneErr=document.getElementById('bookPhoneErr');
+  var statusEl=document.getElementById('bookStatus');
+  var submitBtn=document.getElementById('bookSubmitBtn');
+  var triggers=document.querySelectorAll('.js-book-cta');
+  var lastFocused=null;
+
+  function openModal(e){
+    if(e) e.preventDefault();
+    lastFocused=document.activeElement;
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden','false');
+    document.body.classList.add('modal-open');
+    setTimeout(function(){nameInput.focus();},60);
+  }
+  function closeModal(){
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden','true');
+    document.body.classList.remove('modal-open');
+    if(lastFocused&&lastFocused.focus) lastFocused.focus();
+  }
+
+  triggers.forEach(function(t){t.addEventListener('click',openModal);});
+  closeBtn.addEventListener('click',closeModal);
+  overlay.addEventListener('click',function(e){if(e.target===overlay) closeModal();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape' && overlay.classList.contains('open')) closeModal();
+  });
+
+  function setError(input,errEl,show){
+    input.classList.toggle('invalid',show);
+    if(errEl) errEl.style.display=show?'block':'none';
+  }
+
+  function validate(){
+    var ok=true;
+    var nameVal=nameInput.value.trim();
+    var phoneClean=phoneInput.value.trim().replace(/[\s\-()]/g,'');
+    var phoneOk=/^\+?[0-9]{7,15}$/.test(phoneClean);
+
+    var nameOk=nameVal.length>=2;
+    setError(nameInput,nameErr,!nameOk);
+    setError(phoneInput,phoneErr,!phoneOk);
+    if(!nameOk||!phoneOk) ok=false;
+    return ok;
+  }
+
+  [nameInput,phoneInput].forEach(function(input){
+    input.addEventListener('input',function(){
+      if(input.classList.contains('invalid')) validate();
+    });
+  });
+
+  function setStatus(msg,type){
+    statusEl.textContent=msg;
+    statusEl.className='modal-status'+(type?' '+type:'');
+  }
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+
+    if(companyInput&&companyInput.value){return;} // honeypot tripped — silently drop
+
+    if(!validate()){
+      setStatus('Please check the fields above.','error');
+      return;
+    }
+
+    var endpointReady=GOOGLE_SHEET_ENDPOINT && GOOGLE_SHEET_ENDPOINT.indexOf('PASTE_YOUR')!==0;
+    if(!endpointReady){
+      setStatus('Form isn’t connected yet — please email hello@deliberatelab.com.','error');
+      return;
+    }
+
+    var name=nameInput.value.trim();
+    var phone=phoneInput.value.trim();
+
+    submitBtn.disabled=true;
+    setStatus('Sending…','');
+
+    var body='name='+encodeURIComponent(name)+'&phone='+encodeURIComponent(phone);
+
+    fetch(GOOGLE_SHEET_ENDPOINT,{
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:body
+    }).then(function(){
+      setStatus('Thanks — we’ll call you back within one business day.','success');
+      form.reset();
+      markAutoShown();
+      setTimeout(closeModal,2200);
+    }).catch(function(){
+      setStatus('Something went wrong. Please email hello@deliberatelab.com.','error');
+    }).finally(function(){
+      submitBtn.disabled=false;
+    });
+  });
+
+  /* ---- auto-trigger: exit-intent on desktop, inactivity on mobile ---- */
+  var AUTO_KEY='bookModalAutoShown';
+  var autoShown=false;
+  try{ autoShown = sessionStorage.getItem(AUTO_KEY)==='1'; }catch(err){}
+
+  function markAutoShown(){
+    autoShown=true;
+    try{ sessionStorage.setItem(AUTO_KEY,'1'); }catch(err){}
+  }
+
+  function autoOpen(){
+    if(autoShown||overlay.classList.contains('open')) return;
+    markAutoShown();
+    openModal();
+  }
+
+  if(!autoShown){
+    var isTouch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+
+    if(isTouch){
+      // mobile / touch: pop after 5s of no scroll/touch activity
+      var idleTimer=null;
+      function resetIdleTimer(){
+        if(autoShown) return;
+        if(idleTimer) clearTimeout(idleTimer);
+        idleTimer=setTimeout(autoOpen,5000);
+      }
+      ['touchstart','touchmove','scroll','click'].forEach(function(evt){
+        window.addEventListener(evt,resetIdleTimer,{passive:true});
+      });
+      resetIdleTimer();
+    }else{
+      // desktop: pop when the cursor exits via the top of the window
+      var armed=false;
+      setTimeout(function(){armed=true;},2000); // ignore the first 2s so a stray load-time move doesn't fire it
+      document.addEventListener('mouseout',function(e){
+        if(!armed||autoShown) return;
+        if(e.clientY<=0 && !e.relatedTarget && !e.toElement){
+          autoOpen();
+        }
+      });
+    }
   }
 })();
