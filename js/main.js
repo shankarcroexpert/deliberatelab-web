@@ -12,12 +12,50 @@ var GOOGLE_SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbxyqdBEAaQK
     window.addEventListener('scroll',onScroll,{passive:true});
   }
 
-  // mobile menu toggle
+  // mobile menu — animated open/close, focus-trapped, Esc + outside-click + link-tap to close, scroll locked while open
   var mb=document.getElementById('menuBtn'), nl=document.getElementById('navlinks');
   if(mb&&nl){
-    mb.addEventListener('click',function(){nl.classList.toggle('open');});
-    nl.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click',function(){nl.classList.remove('open');});
+    var navAnchors=Array.prototype.slice.call(nl.querySelectorAll('a'));
+    var focusables=[mb].concat(navAnchors);
+    var lastFocused=null;
+
+    function openNav(){
+      lastFocused=document.activeElement;
+      nl.classList.add('open');
+      mb.classList.add('open');
+      mb.setAttribute('aria-expanded','true');
+      document.body.classList.add('nav-open');
+    }
+    function closeNav(returnFocus){
+      nl.classList.remove('open');
+      mb.classList.remove('open');
+      mb.setAttribute('aria-expanded','false');
+      document.body.classList.remove('nav-open');
+      if(returnFocus && mb.focus) mb.focus();
+      else if(lastFocused && lastFocused.focus) lastFocused.focus();
+    }
+
+    mb.addEventListener('click',function(){
+      if(nl.classList.contains('open')) closeNav(false); else openNav();
+    });
+    navAnchors.forEach(function(a){
+      a.addEventListener('click',function(){closeNav(false);});
+    });
+    document.addEventListener('click',function(e){
+      if(!nl.classList.contains('open')) return;
+      if(!nl.contains(e.target) && e.target!==mb && !mb.contains(e.target)) closeNav(false);
+    });
+    document.addEventListener('keydown',function(e){
+      if(!nl.classList.contains('open')) return;
+      if(e.key==='Escape'){ closeNav(true); return; }
+      if(e.key==='Tab'){
+        var idx=focusables.indexOf(document.activeElement);
+        if(e.shiftKey){
+          if(idx<=0){ e.preventDefault(); focusables[focusables.length-1].focus(); }
+        }else{
+          if(idx===-1||idx===focusables.length-1){ e.preventDefault(); focusables[0].focus(); }
+        }
+      }
     });
   }
 

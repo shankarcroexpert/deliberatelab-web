@@ -13,6 +13,7 @@
 <body>
 
 <header id="hdr">
+  <div class="scroll-progress" id="scrollProgress"></div>
   <div class="wrap nav">
     <a class="brand" href="index.html">
       <svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -30,7 +31,7 @@
     </nav>
     <div class="nav-cta">
       <a href="#book" class="btn js-book-cta">Book a call <span class="arw">→</span></a>
-      <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
@@ -38,7 +39,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="wrap hero-grid">
-    <div class="hero-copy reveal">
+    <div class="hero-copy">
       <span class="eyebrow">Experimentation for considered purchases</span>
       <h1>Your customers decide online. They buy <em>offline.</em> We prove what changed their mind.</h1>
       <p class="lead">Deliberate Lab runs research-led experimentation for high-consideration brands — automotive, real estate, BFSI, luxury and premium education — and measures the lift all the way to the offline sale.</p>
@@ -50,7 +51,7 @@
         <span class="tickline"></span> EVIDENCE, NOT GUESSWORK &nbsp;·&nbsp; ONLINE&nbsp;→&nbsp;OFFLINE, MEASURED
       </div>
     </div>
-    <div class="hero-visual reveal">
+    <div class="hero-visual">
       <!-- signature: closed-loop online -> offline diagram -->
       <svg class="diagram" viewBox="0 0 460 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Closed loop from online decision to offline sale">
         <defs>
@@ -64,29 +65,31 @@
         </g>
         <text x="20" y="14" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.5" fill="#868a91">FIG. A — THE CLOSED LOOP</text>
 
-        <g>
+        <g class="fig-node fig-node-a">
           <rect x="34" y="120" width="150" height="118" rx="3" fill="#f7f4ee" stroke="#e7e2d8"/>
           <text x="50" y="146" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1" fill="#9c7a2c">ONLINE</text>
           <path d="M92 168 l0 40 l11 -11 l7 15 l7 -3 l-7 -15 l16 0 z" fill="#17191e"/>
-          <text x="50" y="226" font-family="Hanken Grotesk, sans-serif" font-size="12.5" fill="#4b4f57">Configures. Enquires.</text>
+          <text x="50" y="226" font-family="Hanken Grotesk, sans-serif" font-size="10" fill="#4b4f57">Configures. Enquires.</text>
         </g>
 
-        <g>
+        <g class="fig-node fig-node-b">
           <rect x="276" y="120" width="150" height="118" rx="3" fill="#17191e"/>
           <text x="292" y="146" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1" fill="#c9a24b">OFFLINE</text>
           <path d="M351 165 c-13 0 -23 10 -23 23 c0 16 23 34 23 34 c0 0 23 -18 23 -34 c0 -13 -10 -23 -23 -23 z" fill="none" stroke="#c9a24b" stroke-width="2"/>
           <circle cx="351" cy="188" r="7" fill="#c9a24b"/>
-          <text x="292" y="243" font-family="Hanken Grotesk, sans-serif" font-size="12.5" fill="#d9d6ce">Showroom. Branch. Sale.</text>
+          <text x="292" y="243" font-family="Hanken Grotesk, sans-serif" font-size="8.7" fill="#d9d6ce">Showroom. Branch. Sale.</text>
         </g>
 
-        <path d="M184 150 C 230 96, 300 96, 340 150" fill="none" stroke="#9c7a2c" stroke-width="2" marker-end="url(#ah)"/>
-        <text x="262" y="92" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#9c7a2c">decision</text>
+        <path class="fig-arc fig-arc-decision" d="M184 150 C 230 96, 300 96, 340 122" fill="none" stroke="#9c7a2c" stroke-width="2" marker-end="url(#ah)"/>
+        <text class="fig-label fig-label-decision" x="262" y="92" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#9c7a2c">decision</text>
 
-        <path d="M320 238 C 280 300, 200 300, 154 246" fill="none" stroke="#17191e" stroke-width="1.5" stroke-dasharray="2 5" marker-end="url(#ah)"/>
-        <text x="237" y="300" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#868a91">attributed back</text>
+        <path class="fig-arc fig-arc-back" d="M320 238 C 280 300, 200 300, 154 246" fill="none" stroke="#17191e" stroke-width="1.5" stroke-dasharray="2 5" marker-end="url(#ah)"/>
+        <text class="fig-label fig-label-back" x="237" y="300" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#868a91">attributed back</text>
 
-        <rect x="150" y="330" width="160" height="22" rx="2" fill="#f5edda"/>
-        <text x="230" y="345" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1" fill="#9c7a2c">MEASURED · NOT MODELLED</text>
+        <g class="fig-badge">
+          <rect x="150" y="330" width="160" height="22" rx="2" fill="#f5edda"/>
+          <text x="230" y="345" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1" fill="#9c7a2c">MEASURED · NOT MODELLED</text>
+        </g>
       </svg>
     </div>
   </div>
@@ -171,7 +174,7 @@
       <div class="exhibit">03 — <b>How we work</b></div>
       <h2 style="max-width:20ch">Research first. Test where it counts. Measure to the sale.</h2>
     </div>
-    <div class="steps reveal">
+    <div class="steps reveal" data-stagger>
       <div class="step">
         <div class="num">01</div>
         <h3>Research</h3>
@@ -207,11 +210,11 @@
       </div>
       <div class="readout" aria-label="PROOF Score weighting">
         <div class="rhead"><span>Criterion</span><span>Weight</span></div>
-        <div class="rrow"><span class="letter">P</span><span class="rlabel">Potential revenue</span><span class="bars"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="wt">×3</span></div>
-        <div class="rrow"><span class="letter">R</span><span class="rlabel">Reach</span><span class="bars"><i class="on"></i><i></i><i></i></span><span class="wt">×1</span></div>
-        <div class="rrow"><span class="letter">O</span><span class="rlabel">Odds of success</span><span class="bars"><i class="on"></i><i class="on"></i><i></i></span><span class="wt">×2</span></div>
-        <div class="rrow"><span class="letter">O</span><span class="rlabel">Offline impact</span><span class="bars"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="wt">×3</span></div>
-        <div class="rrow"><span class="letter">F</span><span class="rlabel">Feasibility</span><span class="bars"><i class="on"></i><i></i><i></i></span><span class="wt">×1</span></div>
+        <div class="rrow"><span class="letter">P</span><span class="rlabel">Potential revenue</span><span class="bars"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="wt">×<span class="countup" data-target="3">3</span></span></div>
+        <div class="rrow"><span class="letter">R</span><span class="rlabel">Reach</span><span class="bars"><i class="on"></i><i></i><i></i></span><span class="wt">×<span class="countup" data-target="1">1</span></span></div>
+        <div class="rrow"><span class="letter">O</span><span class="rlabel">Odds of success</span><span class="bars"><i class="on"></i><i class="on"></i><i></i></span><span class="wt">×<span class="countup" data-target="2">2</span></span></div>
+        <div class="rrow"><span class="letter">O</span><span class="rlabel">Offline impact</span><span class="bars"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="wt">×<span class="countup" data-target="3">3</span></span></div>
+        <div class="rrow"><span class="letter">F</span><span class="rlabel">Feasibility</span><span class="bars"><i class="on"></i><i></i><i></i></span><span class="wt">×<span class="countup" data-target="1">1</span></span></div>
         <div class="rnote">Weighted so the biggest, most offline-relevant bets rise to the top of the roadmap — the opposite of shipping whatever is quickest.</div>
       </div>
     </div>
@@ -227,7 +230,7 @@
         <h2>Three ways to work with us.</h2>
       </div>
     </div>
-    <div class="cards reveal">
+    <div class="cards reveal" data-stagger>
       <div class="card feature">
         <span class="badge">Start here</span>
         <span class="tag">The one door in</span>
@@ -262,7 +265,7 @@
       <h2>We’d rather show our method than borrow logos.</h2>
       <p class="lead">Deliberate Lab is new, and we won’t pretend otherwise. What we bring is operator experience running experimentation for one of the most considered purchases there is, a method built on the discipline of the field’s best, and a promise to report the truth — including the tests that lose. As our founding clients’ results come in, they’ll live here. Until then, judge us on how we think.</p>
     </div>
-    <div class="pillars reveal">
+    <div class="pillars reveal" data-stagger>
       <div class="pillar">
         <div class="p-k">Operator-built</div>
         <h3>From inside the showroom world</h3>
@@ -378,5 +381,6 @@
 </div>
 
 <script src="js/main.js"></script>
+<script src="js/motion.js"></script>
 </body>
 </html>
