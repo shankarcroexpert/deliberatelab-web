@@ -226,3 +226,36 @@ var GOOGLE_SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbxyqdBEAaQK
     }
   }
 })();
+
+/* FAQ accordion — real <button> + aria-expanded (native keyboard support).
+   Panels have no default max-height in CSS, so without this script every
+   answer is simply visible; JS only collapses what it can also expand. */
+(function(){
+  var items=document.querySelectorAll('.faq-item');
+  if(!items.length) return;
+
+  function setOpen(btn,panel,open){
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    panel.style.maxHeight=open?panel.scrollHeight+'px':'0px';
+  }
+
+  items.forEach(function(item){
+    var btn=item.querySelector('.faq-q');
+    var panel=item.querySelector('.faq-a');
+    if(!btn||!panel) return;
+    setOpen(btn,panel,btn.getAttribute('aria-expanded')==='true');
+    btn.addEventListener('click',function(){
+      setOpen(btn,panel,btn.getAttribute('aria-expanded')!=='true');
+    });
+  });
+
+  window.addEventListener('resize',function(){
+    items.forEach(function(item){
+      var btn=item.querySelector('.faq-q');
+      var panel=item.querySelector('.faq-a');
+      if(btn&&panel&&btn.getAttribute('aria-expanded')==='true'){
+        panel.style.maxHeight=panel.scrollHeight+'px';
+      }
+    });
+  });
+})();

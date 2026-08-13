@@ -45,31 +45,35 @@
     heroCopy.classList.add('motion-hero');
   }
 
-  /* ---------- 2. self-drawing hero diagram (FIG. A) ---------- */
-  function initHeroDiagram(){
-    var svg = document.querySelector('.hero .diagram');
-    if(!svg || reduceMotion) return;
+  /* ---------- 2. self-drawing diagrams (FIG. A and any reuse of it) ----------
+     Scans every .diagram on the page, not just the homepage hero's, so the
+     same closed-loop figure can be reused (e.g. on method.html) and still
+     self-draw on scroll into view. */
+  function initDiagrams(){
+    if(reduceMotion) return;
 
-    svg.querySelectorAll('.fig-arc').forEach(function(path){
-      var len = path.getTotalLength();
-      if(!path.getAttribute('stroke-dasharray')){
-        path.style.strokeDasharray = len; // solid arcs need a dash pattern to draw with
-      }
-      path.style.strokeDashoffset = len; // dashed arcs already have one — offset alone reveals it
-    });
-
-    svg.classList.add('fig-armed');
-
-    if(!hasIO){ svg.classList.add('fig-draw'); return; }
-    var io = new IntersectionObserver(function(entries, obs){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          svg.classList.add('fig-draw');
-          obs.unobserve(entry.target);
+    document.querySelectorAll('.diagram').forEach(function(svg){
+      svg.querySelectorAll('.fig-arc').forEach(function(path){
+        var len = path.getTotalLength();
+        if(!path.getAttribute('stroke-dasharray')){
+          path.style.strokeDasharray = len; // solid arcs need a dash pattern to draw with
         }
+        path.style.strokeDashoffset = len; // dashed arcs already have one — offset alone reveals it
       });
-    }, {threshold:.3});
-    io.observe(svg);
+
+      svg.classList.add('fig-armed');
+
+      if(!hasIO){ svg.classList.add('fig-draw'); return; }
+      var io = new IntersectionObserver(function(entries, obs){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            svg.classList.add('fig-draw');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, {threshold:.3});
+      io.observe(svg);
+    });
   }
 
   /* ---------- 3. staggered scroll reveals ---------- */
@@ -199,7 +203,7 @@
   }
 
   initHeroEntrance();
-  initHeroDiagram();
+  initDiagrams();
   initStaggerReveals();
   initCountups();
   initProofBars();

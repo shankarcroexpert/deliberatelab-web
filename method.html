@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Method — Deliberate Lab</title>
+<meta name="description" content="How Deliberate Lab decides what to build (the PROOF Score) and how we measure it (the closed loop from online action to offline sale) — plus an interactive PROOF Score calculator.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy" style="max-width:700px">
+      <span class="eyebrow">Method</span>
+      <h1>How we decide what to build — and how we measure it.</h1>
+      <p class="lead">Two things make Deliberate Lab's method different: PROOF, the framework that decides what earns a test, and the closed loop that measures every result against the sale — not the click.</p>
+      <div class="cta-row">
+        <a href="#book" class="btn js-book-cta">Book a discovery call <span class="arw">→</span></a>
+        <a href="#calculator" class="btn btn-ghost">Try the PROOF Score</a>
+      </div>
+      <div class="foot-note">
+        <span class="tickline"></span> RESEARCH-LED &nbsp;·&nbsp; EVIDENCE, NOT GUESSWORK
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 HOW WE MEASURE -->
+<section class="section" id="how-we-measure">
+  <div class="wrap">
+    <div class="loop-grid reveal">
+      <div class="loop-copy">
+        <div class="exhibit">01 — <b>How we measure</b></div>
+        <h2>The loop that keeps every result honest.</h2>
+        <p class="lead">Most CRO stops at the form. We don't. Every meaningful online action — a configurator session, a loan enquiry, a booked test drive — gets tied to what actually happens next: a delivery, a disbursement, a counter booking.</p>
+        <p>We agree the attribution window and matching method with you upfront, during the Audit, so by the time a test goes live, everyone already trusts the number it reports.</p>
+        <div class="loop-examples">
+          <div class="ex"><span class="from">TEST DRIVE</span><span class="arw">→</span><span class="to">delivery</span></div>
+          <div class="ex"><span class="from">LOAN ENQUIRY</span><span class="arw">→</span><span class="to">disbursed amount</span></div>
+          <div class="ex"><span class="from">SITE VISIT</span><span class="arw">→</span><span class="to">booking at the counter</span></div>
+        </div>
+        <p class="mono-note"><span class="tickline"></span> Every scorecard reports the flat and losing tests too — not just the wins.</p>
+      </div>
+      <div class="loop-visual">
+        <svg class="diagram" viewBox="0 0 460 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Closed loop from online decision to offline sale">
+          <defs>
+            <marker id="ah2" markerWidth="9" markerHeight="9" refX="6" refY="4.5" orient="auto">
+              <path d="M0 0 L8 4.5 L0 9" fill="#9c7a2c"/>
+            </marker>
+          </defs>
+          <g stroke="#e7e2d8" stroke-width="1">
+            <line x1="20" y1="20" x2="440" y2="20"/>
+            <line x1="20" y1="360" x2="440" y2="360"/>
+          </g>
+          <text x="20" y="14" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.5" fill="#868a91">FIG. A — THE CLOSED LOOP</text>
+
+          <g class="fig-node fig-node-a">
+            <rect x="34" y="120" width="150" height="118" rx="3" fill="#f7f4ee" stroke="#e7e2d8"/>
+            <text x="50" y="146" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1" fill="#9c7a2c">ONLINE</text>
+            <path d="M92 168 l0 40 l11 -11 l7 15 l7 -3 l-7 -15 l16 0 z" fill="#17191e"/>
+            <text x="50" y="226" font-family="Hanken Grotesk, sans-serif" font-size="10" fill="#4b4f57">Configures. Enquires.</text>
+          </g>
+
+          <g class="fig-node fig-node-b">
+            <rect x="276" y="120" width="150" height="118" rx="3" fill="#17191e"/>
+            <text x="292" y="146" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1" fill="#c9a24b">OFFLINE</text>
+            <path d="M351 165 c-13 0 -23 10 -23 23 c0 16 23 34 23 34 c0 0 23 -18 23 -34 c0 -13 -10 -23 -23 -23 z" fill="none" stroke="#c9a24b" stroke-width="2"/>
+            <circle cx="351" cy="188" r="7" fill="#c9a24b"/>
+            <text x="292" y="243" font-family="Hanken Grotesk, sans-serif" font-size="8.7" fill="#d9d6ce">Showroom. Branch. Sale.</text>
+          </g>
+
+          <path class="fig-arc fig-arc-decision" d="M184 150 C 230 96, 300 96, 340 122" fill="none" stroke="#9c7a2c" stroke-width="2" marker-end="url(#ah2)"/>
+          <text class="fig-label fig-label-decision" x="262" y="92" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#9c7a2c">decision</text>
+
+          <path class="fig-arc fig-arc-back" d="M320 238 C 280 300, 200 300, 154 246" fill="none" stroke="#17191e" stroke-width="1.5" stroke-dasharray="2 5" marker-end="url(#ah2)"/>
+          <text class="fig-label fig-label-back" x="237" y="300" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#868a91">attributed back</text>
+
+          <g class="fig-badge">
+            <rect x="150" y="330" width="160" height="22" rx="2" fill="#f5edda"/>
+            <text x="230" y="345" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1" fill="#9c7a2c">MEASURED · NOT MODELLED</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 OUR PROCESS -->
+<section class="section warm" id="process">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="exhibit">02 — <b>Our process</b></div>
+      <h2 style="max-width:22ch">Research. Prioritise. Experiment. Measure.</h2>
+      <p class="lead">The same four-stage loop runs through every engagement, from the first Audit to the tenth month of a Program.</p>
+    </div>
+    <div class="timeline reveal" data-stagger>
+      <div class="tl-item">
+        <div class="tl-num">01</div>
+        <div class="tl-body">
+          <h3>Research</h3>
+          <p>We start in the field, not the dashboard — qualitative interviews, session recordings, on-site or in-showroom observation, and a review of your current analytics, to find where high-intent buyers actually hesitate.</p>
+          <ul class="check-list">
+            <li>Stakeholder and customer interviews</li>
+            <li>Session recordings and funnel analysis</li>
+            <li>Tracking and data-layer sanity check</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">02</div>
+        <div class="tl-body">
+          <h3>Prioritise</h3>
+          <p>Every candidate idea is scored on the PROOF framework — weighted so the biggest, most offline-relevant bets rise to the top of the roadmap, instead of whatever's quickest to ship.</p>
+          <ul class="check-list">
+            <li>Scored against potential revenue, reach, odds of success, offline impact and feasibility</li>
+            <li>Roadmap reviewed and agreed with you before a single test is built</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">03</div>
+        <div class="tl-body">
+          <h3>Experiment</h3>
+          <p>Controlled A/B tests where your volume supports them; disciplined, evidence-based rollouts where it doesn't — but never faked statistics or tests called early to hit a deadline.</p>
+          <ul class="check-list">
+            <li>Proper sample-size and duration planning up front</li>
+            <li>QA across desktop, mobile and your key browsers and devices</li>
+            <li>Rollouts watched against guardrail metrics, not just the primary one</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">04</div>
+        <div class="tl-body">
+          <h3>Measure</h3>
+          <p>Lift is tracked through to the offline outcome and reported in one honest scorecard — including the tests that lost or came back flat.</p>
+          <ul class="check-list">
+            <li>Online lift and offline lift reported side by side</li>
+            <li>Wins, losses and flat results — all of them, every time</li>
+            <li>Learnings folded back into the next round of research</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 PROOF SCORE CALCULATOR -->
+<section class="section" id="calculator">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="exhibit">03 — <b>Try it yourself</b></div>
+      <h2 style="max-width:20ch">The PROOF Score — score your own idea.</h2>
+      <p class="lead">Move the sliders the way you'd score a real idea. The weighting is exactly what we use to prioritise every client roadmap.</p>
+    </div>
+    <div class="calc reveal">
+      <div class="calc-sliders">
+        <div class="calc-row">
+          <div class="calc-row-head">
+            <label for="pv">Potential revenue <span class="wt">×3</span></label>
+            <output for="pv" id="pvVal">3</output>
+          </div>
+          <input type="range" min="1" max="5" step="1" value="3" id="pv" data-weight="3" aria-describedby="calcWeightNote">
+        </div>
+        <div class="calc-row">
+          <div class="calc-row-head">
+            <label for="reach">Reach <span class="wt">×1</span></label>
+            <output for="reach" id="reachVal">3</output>
+          </div>
+          <input type="range" min="1" max="5" step="1" value="3" id="reach" data-weight="1">
+        </div>
+        <div class="calc-row">
+          <div class="calc-row-head">
+            <label for="odds">Odds of success <span class="wt">×2</span></label>
+            <output for="odds" id="oddsVal">3</output>
+          </div>
+          <input type="range" min="1" max="5" step="1" value="3" id="odds" data-weight="2">
+        </div>
+        <div class="calc-row">
+          <div class="calc-row-head">
+            <label for="offline">Offline impact <span class="wt">×3</span></label>
+            <output for="offline" id="offlineVal">3</output>
+          </div>
+          <input type="range" min="1" max="5" step="1" value="3" id="offline" data-weight="3" aria-describedby="calcWeightNote">
+        </div>
+        <div class="calc-row">
+          <div class="calc-row-head">
+            <label for="feas">Feasibility <span class="wt">×1</span></label>
+            <output for="feas" id="feasVal">3</output>
+          </div>
+          <input type="range" min="1" max="5" step="1" value="3" id="feas" data-weight="1">
+        </div>
+      </div>
+      <div class="calc-result" role="status">
+        <div class="calc-gauge-track"><div class="calc-gauge-fill" id="calcFill" style="width:60%"></div></div>
+        <div class="calc-score"><span id="calcTotal">30</span><span class="calc-max">/ 50</span></div>
+        <div class="calc-verdict tier-mid" id="calcVerdict" aria-live="polite">Worth testing</div>
+        <p class="mono-note" id="calcWeightNote"><span class="tickline"></span> Potential revenue &amp; offline impact carry triple weight — the biggest, most offline-relevant bets should always rise to the top.</p>
+        <a href="#book" class="btn btn-gold js-book-cta">This is exactly how we prioritise your roadmap <span class="arw">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band" id="book">
+  <div class="wrap reveal">
+    <span class="eyebrow" style="justify-content:center;margin-bottom:22px">Start the conversation</span>
+    <h2>Ready to put a real roadmap through PROOF?</h2>
+    <p class="lead">Start with a discovery call — or the Deliberate Audit if you're ready to go straight to a prioritised, PROOF-scored roadmap.</p>
+    <a href="mailto:hello@deliberatelab.com" class="btn js-book-cta">Book a discovery call <span class="arw">→</span></a>
+  </div>
+</section>
+
+<!-- FOOTER + BOOK A CALL MODAL (injected by js/partials.js) -->
+<div id="site-footer"></div>
+
+<script src="js/partials.js"></script>
+<script src="js/main.js"></script>
+<script src="js/motion.js"></script>
+<script src="js/proof-calc.js"></script>
+</body>
+</html>

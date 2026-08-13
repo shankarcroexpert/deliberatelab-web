@@ -12,29 +12,7 @@
 </head>
 <body>
 
-<header id="hdr">
-  <div class="scroll-progress" id="scrollProgress"></div>
-  <div class="wrap nav">
-    <a class="brand" href="index.html">
-      <svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M9 2v7.2L3.4 19.1A2 2 0 0 0 5.1 22h13.8a2 2 0 0 0 1.7-2.9L15 9.2V2" stroke="#17191e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M8 2h8" stroke="#17191e" stroke-width="1.6" stroke-linecap="round"/>
-        <circle cx="12" cy="16.5" r="1.7" fill="#c9a24b"/>
-      </svg>
-      Deliberate&nbsp;Lab
-    </a>
-    <nav class="nav-links" id="navlinks">
-      <a href="#loop">Method</a>
-      <a href="#offer">Services</a>
-      <a href="#about">About</a>
-      <a href="#insights">Insights</a>
-    </nav>
-    <div class="nav-cta">
-      <a href="#book" class="btn js-book-cta">Book a call <span class="arw">→</span></a>
-      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
-    </div>
-  </div>
-</header>
+<div id="site-header"></div>
 
 <!-- HERO -->
 <section class="hero">
@@ -295,91 +273,10 @@
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer id="insights">
-  <div class="wrap">
-    <div class="f-top">
-      <div class="f-brand">
-        <a class="brand" href="index.html">
-          <svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M9 2v7.2L3.4 19.1A2 2 0 0 0 5.1 22h13.8a2 2 0 0 0 1.7-2.9L15 9.2V2" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M8 2h8" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round"/>
-            <circle cx="12" cy="16.5" r="1.7" fill="#c9a24b"/>
-          </svg>
-          Deliberate&nbsp;Lab
-        </a>
-        <p>Experimentation for considered purchases.<br>Online → offline, measured.</p>
-      </div>
-      <div class="f-col">
-        <h4>Company</h4>
-        <a href="#about">About</a>
-        <a href="#method">Method</a>
-        <a href="#insights">Insights</a>
-      </div>
-      <div class="f-col">
-        <h4>Services</h4>
-        <a href="#offer">The Deliberate Audit</a>
-        <a href="#offer">The Deliberate Program</a>
-        <a href="#offer">On-demand</a>
-      </div>
-      <div class="f-col">
-        <h4>Contact</h4>
-        <a href="mailto:hello@deliberatelab.com">hello@deliberatelab.com</a>
-        <a href="#book" class="js-book-cta">Book a call</a>
-        <a href="#">LinkedIn</a>
-      </div>
-    </div>
-    <div class="f-bot">
-      <span>© 2026 Deliberate Lab · deliberatelab.com</span>
-      <span>Evidence, not guesswork.</span>
-    </div>
-  </div>
-</footer>
+<!-- FOOTER + BOOK A CALL MODAL (injected by js/partials.js) -->
+<div id="site-footer"></div>
 
-<!-- BOOK A CALL MODAL -->
-<div class="modal-overlay" id="bookModalOverlay" aria-hidden="true">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="bookModalTitle">
-    <button type="button" class="modal-close" id="bookModalClose" aria-label="Close">&times;</button>
-
-    <div class="modal-brand">
-      <svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M9 2v7.2L3.4 19.1A2 2 0 0 0 5.1 22h13.8a2 2 0 0 0 1.7-2.9L15 9.2V2" stroke="#17191e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M8 2h8" stroke="#17191e" stroke-width="1.6" stroke-linecap="round"/>
-        <circle cx="12" cy="16.5" r="1.7" fill="#c9a24b"/>
-      </svg>
-      <span>Deliberate&nbsp;Lab</span>
-    </div>
-
-    <span class="eyebrow">Start the conversation</span>
-    <h3 id="bookModalTitle">Book a discovery call</h3>
-    <p class="modal-sub">Share your details and we’ll call you back within one business day.</p>
-
-    <form id="bookForm" novalidate>
-      <div class="field">
-        <label for="bookName">Name</label>
-        <input type="text" id="bookName" name="name" autocomplete="name" required placeholder="Your full name">
-        <span class="err" id="bookNameErr">Please enter your name.</span>
-      </div>
-      <div class="field">
-        <label for="bookPhone">Phone number</label>
-        <input type="tel" id="bookPhone" name="phone" autocomplete="tel" required placeholder="e.g. 98765 43210" inputmode="tel">
-        <span class="err" id="bookPhoneErr">Please enter a valid phone number.</span>
-      </div>
-
-      <!-- spam trap — left blank by humans, hidden from view -->
-      <div class="hp-field" aria-hidden="true">
-        <label for="bookCompany">Company</label>
-        <input type="text" id="bookCompany" name="company" tabindex="-1" autocomplete="off">
-      </div>
-
-      <button type="submit" class="btn modal-submit" id="bookSubmitBtn">
-        <span class="btn-txt">Book my call</span> <span class="arw">→</span>
-      </button>
-      <p class="modal-status" id="bookStatus" role="status" aria-live="polite"></p>
-    </form>
-  </div>
-</div>
-
+<script src="js/partials.js"></script>
 <script src="js/main.js"></script>
 <script src="js/motion.js"></script>
 </body>

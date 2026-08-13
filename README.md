@@ -9,19 +9,39 @@ no frameworks — it just runs in a browser.
 ```
 deliberatelab/
 ├── index.html          ← Home page
+├── method.html          } stub pages — hero only for now,
+├── services.html        } content coming next. Each one already
+├── case-studies.html    } wires up the shared header/footer/nav
+├── about.html            } and the "Book a call" modal.
+├── insights.html        }
 ├── css/
 │   └── styles.css      ← Shared styles for EVERY page (colours, fonts, layout)
 ├── js/
-│   └── main.js         ← Shared scripts (sticky nav, mobile menu, scroll reveals)
+│   ├── partials.js     ← THE header/footer/nav/booking-modal markup, in ONE
+│   │                      place. Injected into every page's #site-header /
+│   │                      #site-footer mount points. Edit nav links or footer
+│   │                      columns here — every page picks it up automatically.
+│   ├── main.js          ← Shared scripts (sticky nav, mobile menu, booking
+│   │                       modal, scroll reveals)
+│   └── motion.js        ← Shared motion/animation system
 ├── assets/
 │   ├── loop-diagram.svg ← "Closed loop" diagram (also inline in index.html)
 │   └── scorecard.svg    ← "Honest scorecard" diagram
 └── README.md
 ```
 
-As we add pages, they go at the root next to index.html — e.g. `services.html`,
-`method.html`, `about.html`, `contact.html` — and each one links the same
-`css/styles.css` and `js/main.js`, so the whole site stays consistent.
+Every page follows the same skeleton: an empty `<div id="site-header"></div>`
+near the top of `<body>`, an empty `<div id="site-footer"></div>` near the
+bottom, the page's own content in between, then
+`<script src="js/partials.js"></script>` loaded **before** `main.js` and
+`motion.js` (it has to inject the header/footer markup first, since those two
+scripts look up header/footer elements by id as soon as they run).
+
+To add a new page: copy a stub, keep the `#site-header` / `#site-footer` divs
+and the three `<script>` tags, and — if it should be reachable from the nav —
+add a link with a matching `data-page="yourpage.html"` attribute in
+`js/partials.js`'s `HEADER_HTML` (this also drives the "active page"
+highlight in the nav).
 
 ## How to run it locally
 
@@ -68,4 +88,5 @@ any static host, then pointed at deliberatelab.com. Build and test everything he
 deploy once you're happy.
 
 ---
-Pages built so far: **Home**. Next: Services / The Offer.
+Pages built so far: **Home** (full), plus stub heroes for **Method, Services,
+Case Studies, About, Insights**. Next: fill in each stub's content.

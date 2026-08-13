@@ -127,6 +127,7 @@ header.scrolled{border-bottom:1px solid var(--hairline)}
 /* loop section */
 .loop-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:60px;align-items:center}
 .loop-copy h2{max-width:16ch;margin-bottom:22px}
+.loop-copy p+p{margin-top:14px}
 .loop-examples{margin-top:28px;display:flex;flex-direction:column;gap:0}
 .loop-examples .ex{display:flex;align-items:baseline;gap:14px;padding:14px 0;border-top:1px solid var(--hairline);font-size:15.5px}
 .loop-examples .ex:last-child{border-bottom:1px solid var(--hairline)}
@@ -177,7 +178,7 @@ header.scrolled{border-bottom:1px solid var(--hairline)}
 .card .link{margin-top:22px;font-weight:600;font-size:14.5px;display:inline-flex;align-items:center;gap:8px;color:var(--ink)}
 .card .link .arw{color:var(--gold);transition:transform .18s ease}
 .card:hover .link .arw{transform:translateX(3px)}
-.card.feature .badge{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:var(--gold-line);padding:3px 8px;border-radius:2px;align-self:flex-start;margin-bottom:14px}
+.badge{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:var(--gold-line);padding:3px 8px;border-radius:2px;align-self:flex-start;margin-bottom:14px;display:inline-block}
 
 /* credibility */
 .cred h2{max-width:20ch;margin-bottom:24px}
@@ -193,11 +194,106 @@ header.scrolled{border-bottom:1px solid var(--hairline)}
 .cta-band h2{font-size:clamp(30px,4vw,52px);max-width:20ch;margin:0 auto 20px}
 .cta-band .lead{margin:0 auto 34px;text-align:center}
 
+/* ---------- services page: the Deliberate Audit ---------- */
+.audit-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.audit-copy p+p{margin-top:14px}
+.mono-note{font-family:var(--mono);font-size:12.5px;letter-spacing:.03em;color:var(--ink-45);display:flex;align-items:center;gap:10px;margin-top:24px}
+.readout .rnum{font-family:var(--mono);font-size:11px;color:var(--gold-line);width:22px;flex:none}
+.readout .rtag{margin-left:auto;font-size:11.5px;color:#a7a399;white-space:nowrap;padding-left:12px}
+
+/* deliverables strip reuses .sectors — see "sector strip" rules above */
+
+/* ---------- services page: the Deliberate Program tiers ---------- */
+.tier-attrs{list-style:none;margin:18px 0 6px;border-top:1px solid var(--hairline)}
+.tier-attrs li{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:11px 0;border-bottom:1px solid var(--hairline);font-size:13px}
+.tier-attrs .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-45)}
+.tier-attrs .v{color:var(--ink);font-weight:500;text-align:right}
+.card.feature .tier-attrs{border-top-color:rgba(255,255,255,.14)}
+.card.feature .tier-attrs li{border-bottom-color:rgba(255,255,255,.1)}
+.card.feature .tier-attrs .k{color:#a7a399}
+.card.feature .tier-attrs .v{color:#f2efe8}
+
+/* ---------- services page: on-demand ---------- */
+.ondemand-row{display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap}
+.ondemand-row h2{max-width:22ch}
+
+/* ---------- services page: sub-services strip ---------- */
+.subservices{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:52px;border-top:1px solid var(--ink)}
+
+/* ---------- services page: FAQ accordion ---------- */
+.faq-list{margin-top:40px;border-top:1px solid var(--hairline);max-width:820px}
+.faq-item{border-bottom:1px solid var(--hairline)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:20px;width:100%;text-align:left;background:none;border:0;cursor:pointer;padding:22px 0;font-family:var(--serif);font-weight:600;font-size:17px;color:var(--ink)}
+.faq-q:hover{color:var(--gold)}
+.faq-q:focus-visible{outline:2px solid var(--gold-line);outline-offset:4px}
+.faq-q .plus{flex:none;width:20px;height:20px;position:relative}
+.faq-q .plus::before,.faq-q .plus::after{content:"";position:absolute;background:var(--ink);transition:transform .25s var(--ease-out), opacity .2s ease}
+.faq-q .plus::before{top:50%;left:0;width:100%;height:1.5px;transform:translateY(-50%)}
+.faq-q .plus::after{left:50%;top:0;width:1.5px;height:100%;transform:translateX(-50%)}
+.faq-q[aria-expanded="true"] .plus::after{transform:translateX(-50%) rotate(90deg);opacity:0}
+.faq-a{overflow:hidden;transition:max-height .32s var(--ease-out)}
+.faq-a-inner{padding:0 0 22px;font-size:14.5px;color:var(--ink-70);max-width:66ch}
+
+/* ---------- reusable: diamond-bullet checklist ---------- */
+.check-list{list-style:none;margin-top:16px;display:flex;flex-direction:column;gap:9px}
+.check-list li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--ink-70)}
+.check-list li::before{content:"";flex:none;width:7px;height:7px;margin-top:6px;background:var(--gold-line);display:inline-block;transform:rotate(45deg)}
+
+/* ---------- reusable: gold button variant (for dark panels) ---------- */
+.btn-gold{background:var(--gold-line);color:var(--ink);border-color:var(--gold-line)}
+.btn-gold:hover{background:#d9b463;border-color:#d9b463}
+
+/* ---------- method page: vertical process timeline ---------- */
+.timeline{margin-top:52px;border-top:1px solid var(--ink)}
+.tl-item{display:grid;grid-template-columns:48px 1fr;gap:28px;padding:32px 0;border-bottom:1px solid var(--hairline)}
+.tl-item:last-child{border-bottom:0}
+.tl-num{width:48px;height:48px;border-radius:50%;border:1px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;color:var(--ink);flex:none}
+.tl-body::before{content:"";width:36px;height:2px;background:var(--gold-line);display:block;margin-bottom:14px}
+.tl-body h3{font-size:22px;margin-bottom:10px;font-weight:600}
+.tl-body p{font-size:15px;max-width:64ch}
+
+/* ---------- method page: PROOF Score calculator ---------- */
+.calc{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start;margin-top:48px}
+.calc-row{margin-bottom:28px}
+.calc-row:last-child{margin-bottom:0}
+.calc-row-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;gap:10px}
+.calc-row-head label{font-family:var(--sans);font-weight:600;font-size:14.5px;color:var(--ink)}
+.calc-row-head .wt{font-family:var(--mono);font-size:11px;color:var(--gold);margin-left:6px}
+.calc-row-head output{font-family:var(--mono);font-size:16px;color:var(--ink);min-width:16px;text-align:right}
+.calc input[type="range"]{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;background:var(--hairline);outline:none;cursor:pointer;display:block}
+.calc input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:20px;height:20px;border-radius:50%;background:var(--ink);border:2px solid #fff;box-shadow:0 0 0 1px var(--hairline);cursor:pointer;transition:background .15s ease}
+.calc input[type="range"]::-webkit-slider-thumb:hover{background:var(--gold)}
+.calc input[type="range"]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--ink);border:2px solid #fff;box-shadow:0 0 0 1px var(--hairline);cursor:pointer;transition:background .15s ease}
+.calc input[type="range"]::-moz-range-thumb:hover{background:var(--gold)}
+.calc input[type="range"]::-moz-range-track{height:4px;border-radius:2px;background:var(--hairline)}
+.calc input[type="range"]:focus-visible{outline:2px solid var(--gold-line);outline-offset:6px}
+.calc-result{background:var(--ink);color:#fff;border-radius:4px;padding:34px 36px;display:flex;flex-direction:column}
+.calc-gauge-track{height:10px;border-radius:6px;background:rgba(255,255,255,.14);overflow:hidden}
+.calc-gauge-fill{height:100%;width:0%;background:var(--gold-line);border-radius:6px;transition:width .5s var(--ease-out)}
+.calc-score{display:flex;align-items:baseline;gap:6px;margin-top:16px}
+.calc-score #calcTotal{font-family:var(--serif);font-size:44px;font-weight:600;color:#fff;line-height:1}
+.calc-max{font-family:var(--mono);font-size:14px;color:#a7a399}
+.calc-verdict{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;padding:8px 14px;border-radius:20px;display:inline-block;margin-top:18px;border:1px solid rgba(255,255,255,.24);color:#f2efe8;background:rgba(255,255,255,.06);transition:background .2s ease, color .2s ease, border-color .2s ease}
+.calc-verdict.tier-high{background:var(--gold-line);color:var(--ink);border-color:var(--gold-line)}
+.calc-verdict.tier-mid{background:rgba(201,162,75,.16);color:var(--gold-line);border-color:rgba(201,162,75,.4)}
+.calc-verdict.tier-low{background:rgba(255,255,255,.06);color:#a7a399;border-color:rgba(255,255,255,.14)}
+.calc-result .mono-note{color:#a7a399;margin-top:22px}
+.calc-result .btn{margin-top:26px;align-self:flex-start}
+
+/* stub page hero (method / services / case-studies / about / insights) */
+.page-hero{padding:132px 0 88px}
+.page-hero .tag-soon{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-45);background:var(--paper-2);border:1px solid var(--hairline);padding:6px 12px;border-radius:20px;margin-bottom:22px}
+.page-hero h1{font-size:clamp(32px,4.6vw,54px);margin:0 0 22px}
+.page-hero .btn{margin-top:32px}
+
 /* footer */
 footer{background:var(--ink);color:#e7e4dc;padding:70px 0 34px}
 .f-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.12)}
 .f-brand .brand{color:#fff}
 .f-brand p{color:#a7a399;font-family:var(--mono);font-size:12.5px;margin-top:16px;letter-spacing:.02em}
+.f-locale{display:flex;align-items:center;gap:9px;margin-top:18px}
+.f-locale .flag-in{flex:none;border-radius:1px;box-shadow:0 0 0 1px rgba(255,255,255,.16)}
+.f-locale span{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#a7a399}
 .f-col h4{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8f8b82;margin-bottom:16px;font-weight:400}
 .f-col a{display:block;color:#d9d6ce;font-size:14.5px;padding:11px 0}
 .f-col a:hover{color:var(--gold-line)}
@@ -335,7 +431,7 @@ svg.diagram.fig-armed.fig-draw .fig-badge{opacity:1;transform:none}
 
 /* ---------- responsive ---------- */
 @media(max-width:960px){
-  .hero-grid,.split,.loop-grid,.proof-grid{grid-template-columns:1fr;gap:40px}
+  .hero-grid,.split,.loop-grid,.proof-grid,.audit-grid,.calc{grid-template-columns:1fr;gap:40px}
   .hero-visual{order:-1;max-width:440px}
   .steps{grid-template-columns:1fr 1fr}
   .step{border-bottom:1px solid var(--hairline)}
@@ -343,6 +439,9 @@ svg.diagram.fig-armed.fig-draw .fig-badge{opacity:1;transform:none}
   .cards,.pillars{grid-template-columns:1fr}
   .f-top{grid-template-columns:1fr 1fr}
   .f-brand{grid-column:1/-1}
+  .subservices{grid-template-columns:1fr 1fr}
+  .subservices .step{border-bottom:1px solid var(--hairline)}
+  .subservices .step:nth-child(2n){border-right:0}
 }
 @media(max-width:640px){
   .wrap{padding:0 22px}
@@ -358,6 +457,7 @@ svg.diagram.fig-armed.fig-draw .fig-badge{opacity:1;transform:none}
   .menu-btn{display:flex}
   .nav-cta .btn{display:none}
   .hero{padding:48px 0 40px}
+  .page-hero{padding:88px 0 56px}
   .section{padding:64px 0}
   .steps{grid-template-columns:1fr}
   .step{border-right:0}
@@ -367,6 +467,13 @@ svg.diagram.fig-armed.fig-draw .fig-badge{opacity:1;transform:none}
   .readout .rrow{gap:10px}
   .readout .bars{gap:3px}
   .readout .bars i{width:13px}
+  .subservices{grid-template-columns:1fr}
+  .subservices .step{border-right:0}
+  .ondemand-row{gap:24px}
+  .ondemand-row .btn{width:100%;justify-content:center}
+  .tl-item{grid-template-columns:40px 1fr;gap:18px;padding:26px 0}
+  .tl-num{width:40px;height:40px;font-size:12px}
+  .calc-result{padding:26px 24px}
 }
 @media(prefers-reduced-motion:reduce){
   *{scroll-behavior:auto}
@@ -386,4 +493,10 @@ svg.diagram.fig-armed.fig-draw .fig-badge{opacity:1;transform:none}
   .card:hover,.step:hover{transform:none}
   .nav-links{transition:none}
   .menu-btn span{transition:none}
+  .faq-a{transition:none}
+  .faq-q .plus::before,.faq-q .plus::after{transition:none}
+  .calc-gauge-fill{transition:none}
+  .calc-verdict{transition:none}
+  .calc input[type="range"]::-webkit-slider-thumb{transition:none}
+  .calc input[type="range"]::-moz-range-thumb{transition:none}
 }
