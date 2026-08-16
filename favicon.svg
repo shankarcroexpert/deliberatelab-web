@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Deliberate Lab">
+  <rect width="32" height="32" rx="7" fill="#17191e"/>
+  <g transform="translate(5,4)">
+    <path d="M9 2v7.2L3.4 19.1A2 2 0 0 0 5.1 22h13.8a2 2 0 0 0 1.7-2.9L15 9.2V2" stroke="#f2efe8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M8 2h8" stroke="#f2efe8" stroke-width="1.9" stroke-linecap="round"/>
+    <circle cx="12" cy="16.5" r="2" fill="#c9a24b"/>
+  </g>
+</svg>

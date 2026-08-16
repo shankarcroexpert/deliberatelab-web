@@ -3,8 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#17191e">
 <title>Insights — Deliberate Lab</title>
-<meta name="description" content="Field notes on research, testing and offline-loop measurement for high-consideration brands.">
+<meta name="description" content="Experiments, teardowns and research notes from Deliberate Lab — published as we write them, not on a content calendar.">
+<link rel="canonical" href="https://deliberatelab.com/insights.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Deliberate Lab">
+<meta property="og:title" content="Insights">
+<meta property="og:description" content="Experiments, teardowns and research notes from Deliberate Lab — published as we write them, not on a content calendar.">
+<meta property="og:url" content="https://deliberatelab.com/insights.html">
+<meta property="og:image" content="{{OG_IMAGE — 1200x630 social share image for this page}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Insights">
+<meta name="twitter:description" content="Experiments, teardowns and research notes from Deliberate Lab — published as we write them, not on a content calendar.">
+<meta name="twitter:image" content="{{OG_IMAGE — 1200x630 social share image for this page}}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -14,24 +32,134 @@
 
 <div id="site-header"></div>
 
-<!-- INSIGHTS HERO -->
-<section class="section page-hero">
+<main>
+
+<!-- HERO -->
+<section class="hero">
   <div class="wrap">
-    <div class="reveal" style="max-width:720px">
-      <div class="exhibit"><b>Insights</b></div>
-      <span class="tag-soon">Coming soon</span>
-      <h1>Notes on experimentation for considered purchases.</h1>
-      <p class="lead">Field notes on research, testing and offline-loop measurement for automotive, real estate, BFSI, luxury and premium education brands — coming to this page shortly. Book a call if you’d like to talk shop before then.</p>
-      <a href="#book" class="btn js-book-cta">Book a discovery call <span class="arw">→</span></a>
+    <div class="hero-copy" style="max-width:700px">
+      <span class="eyebrow">Insights</span>
+      <h1>Notes from inside the lab.</h1>
+      <p class="lead">Experiments, teardowns and the occasional argument against vanity metrics — published as we write them, not on a content calendar.</p>
+      <div class="cta-row">
+        <a href="#hub" class="btn">Read the latest <span class="arw">→</span></a>
+        <a href="#newsletter" class="btn btn-ghost">Get new posts by email</a>
+      </div>
+      <div class="foot-note">
+        <span class="tickline"></span> NEW POSTS, AS THEY'RE READY &nbsp;·&nbsp; NOTHING GATED
+      </div>
     </div>
   </div>
 </section>
 
+<!-- 01 THE HUB -->
+<section class="section" id="hub">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="exhibit">01 — <b>Recent notes</b></div>
+      <h2 style="max-width:22ch">Filter by what you're here for.</h2>
+    </div>
+
+    <div class="cs-filters" role="group" aria-label="Filter articles by category" id="insFilters">
+      <button type="button" class="cs-filter-btn active" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" class="cs-filter-btn" data-filter="measurement" aria-pressed="false">Measurement</button>
+      <button type="button" class="cs-filter-btn" data-filter="testing" aria-pressed="false">Testing</button>
+      <button type="button" class="cs-filter-btn" data-filter="research" aria-pressed="false">Research</button>
+    </div>
+
+    <div class="cs-grid reveal" data-stagger id="insGrid">
+      <!-- CARD 1 — the one real, published article -->
+      <article class="ins-card" data-category="measurement">
+        <a class="ins-card-link" href="article-closing-the-loop.html">
+          <div class="ins-media" aria-hidden="true"><span class="ins-media-index">01</span></div>
+          <div class="ins-body">
+            <div class="ins-meta">
+              <span class="cs-tag">Measurement</span>
+              <span class="ins-date">August 2026 · 4 min read</span>
+            </div>
+            <h3>Why most CRO stops at the click — and what closing the loop actually means</h3>
+            <p>Most "wins" never get checked against the thing that actually pays the bills. Here's the difference between optimising a proxy and proving revenue.</p>
+            <span class="ins-cta">Read the article <span class="arw">→</span></span>
+          </div>
+        </a>
+      </article>
+
+      <!-- CARD 2 — placeholder: swap for a real <a href> once this post exists -->
+      <article class="ins-card ins-card-soon" data-category="testing">
+        <div class="ins-media" aria-hidden="true"><span class="ins-media-index">02</span></div>
+        <div class="ins-body">
+          <div class="ins-meta">
+            <span class="cs-tag">Testing</span>
+            <span class="ins-date">Coming soon</span>
+          </div>
+          <h3>Why your test can “win” online and still lose you money</h3>
+          <p>A teardown of a real, anonymised experiment where the online metric moved and the sale didn't — and what we changed because of it.</p>
+          <span class="ins-cta ins-cta-soon">In progress</span>
+        </div>
+      </article>
+
+      <!-- CARD 3 — placeholder: swap for a real <a href> once this post exists -->
+      <article class="ins-card ins-card-soon" data-category="research">
+        <div class="ins-media" aria-hidden="true"><span class="ins-media-index">03</span></div>
+        <div class="ins-body">
+          <div class="ins-meta">
+            <span class="cs-tag">Research</span>
+            <span class="ins-date">Coming soon</span>
+          </div>
+          <h3>What eight buyer interviews taught us about hesitation, not features</h3>
+          <p>Field notes on why considered-purchase buyers actually stall — and why it's rarely the reason product teams assume.</p>
+          <span class="ins-cta ins-cta-soon">In progress</span>
+        </div>
+      </article>
+    </div>
+
+    <p class="cs-empty" id="insEmpty" role="status" aria-live="polite" hidden>Nothing in this category yet — <a href="#newsletter">get notified when it lands</a>.</p>
+  </div>
+</section>
+
+<!-- 02 NEWSLETTER -->
+<section class="section warm" id="newsletter">
+  <div class="wrap">
+    <div class="news-panel reveal">
+      <div class="news-copy">
+        <span class="eyebrow">Stay in the loop</span>
+        <h2>Get our experiments and teardowns.</h2>
+        <p class="lead">Short, occasional notes on what we tested, what we learned, and how we measured it — sent only when there's something worth reading, never on a schedule.</p>
+      </div>
+      <form class="news-form" id="newsletterForm" novalidate>
+        <label for="newsEmail" class="sr-only">Email address</label>
+        <div class="news-field">
+          <input type="email" id="newsEmail" name="email" placeholder="you@company.com" required autocomplete="email">
+          <button type="submit" class="btn btn-gold" id="newsSubmitBtn">Subscribe <span class="arw">→</span></button>
+        </div>
+        <div class="hp-field" aria-hidden="true">
+          <label for="newsCompany">Company</label>
+          <input type="text" id="newsCompany" name="company" tabindex="-1" autocomplete="off">
+        </div>
+        <p class="news-status" id="newsStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band" id="book">
+  <div class="wrap reveal">
+    <span class="eyebrow" style="justify-content:center;margin-bottom:22px">Start the conversation</span>
+    <h2>Prefer to talk it through?</h2>
+    <p class="lead">Skip the reading list — book a discovery call and we'll walk through what closing the loop would look like for your funnel specifically.</p>
+    <a href="mailto:hello@deliberatelab.com" class="btn js-book-cta">Book a discovery call <span class="arw">→</span></a>
+  </div>
+</section>
+
+</main>
+
 <!-- FOOTER + BOOK A CALL MODAL (injected by js/partials.js) -->
 <div id="site-footer"></div>
 
-<script src="js/partials.js"></script>
-<script src="js/main.js"></script>
-<script src="js/motion.js"></script>
+<script src="js/partials.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/motion.js" defer></script>
+<script src="js/transitions.js" defer></script>
 </body>
 </html>

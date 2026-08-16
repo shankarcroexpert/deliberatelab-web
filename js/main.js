@@ -3,6 +3,11 @@
 /* Paste the Google Apps Script Web App URL here once deployed (see setup notes). */
 var GOOGLE_SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbxyqdBEAaQKp03K0gSF7gjgpU8VvFph-E3BL7giRJUISO63Jdk4JGJCKJa2ZhMUvPg/exec";
 
+/* Newsletter signup endpoint (insights.html). Leave blank until you have a real
+   ESP/endpoint to POST to — until then the form falls back to a mailto so
+   submissions still reach hello@deliberatelab.com. Same pattern as above. */
+var NEWSLETTER_ENDPOINT = "";
+
 (function(){
   // sticky-nav hairline on scroll
   var hdr=document.getElementById('hdr');
@@ -256,6 +261,136 @@ var GOOGLE_SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbxyqdBEAaQK
       if(btn&&panel&&btn.getAttribute('aria-expanded')==='true'){
         panel.style.maxHeight=panel.scrollHeight+'px';
       }
+    });
+  });
+})();
+
+/* Case studies — sector filter bar (case-studies.html only) */
+(function(){
+  var bar=document.getElementById('csFilters');
+  var grid=document.getElementById('csGrid');
+  if(!bar||!grid) return;
+
+  var buttons=Array.prototype.slice.call(bar.querySelectorAll('.cs-filter-btn'));
+  var cards=Array.prototype.slice.call(grid.querySelectorAll('.cs-card'));
+  var empty=document.getElementById('csEmpty');
+
+  function applyFilter(filter){
+    var visible=0;
+    cards.forEach(function(card){
+      var match=filter==='all'||card.getAttribute('data-sector')===filter;
+      card.hidden=!match;
+      if(match) visible++;
+    });
+    if(empty) empty.hidden=visible>0;
+  }
+
+  buttons.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      buttons.forEach(function(b){
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed','false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed','true');
+      applyFilter(btn.getAttribute('data-filter'));
+    });
+  });
+})();
+
+/* Insights — category filter bar (insights.html only) */
+(function(){
+  var bar=document.getElementById('insFilters');
+  var grid=document.getElementById('insGrid');
+  if(!bar||!grid) return;
+
+  var buttons=Array.prototype.slice.call(bar.querySelectorAll('.cs-filter-btn'));
+  var cards=Array.prototype.slice.call(grid.querySelectorAll('.ins-card'));
+  var empty=document.getElementById('insEmpty');
+
+  function applyFilter(filter){
+    var visible=0;
+    cards.forEach(function(card){
+      var match=filter==='all'||card.getAttribute('data-category')===filter;
+      card.hidden=!match;
+      if(match) visible++;
+    });
+    if(empty) empty.hidden=visible>0;
+  }
+
+  buttons.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      buttons.forEach(function(b){
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed','false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed','true');
+      applyFilter(btn.getAttribute('data-filter'));
+    });
+  });
+})();
+
+/* Newsletter signup — insights.html only. POSTs to NEWSLETTER_ENDPOINT once
+   you've set one; until then it falls back to a mailto so a submission still
+   reaches you instead of silently going nowhere. */
+(function(){
+  var form=document.getElementById('newsletterForm');
+  if(!form) return;
+
+  var emailInput=document.getElementById('newsEmail');
+  var companyInput=document.getElementById('newsCompany'); // honeypot
+  var statusEl=document.getElementById('newsStatus');
+  var submitBtn=document.getElementById('newsSubmitBtn');
+
+  function setStatus(msg,type){
+    statusEl.textContent=msg;
+    statusEl.className='news-status'+(type?' '+type:'');
+  }
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+
+    if(companyInput&&companyInput.value){return;} // honeypot tripped — silently drop
+
+    var email=emailInput.value.trim();
+    var emailOk=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    emailInput.classList.toggle('invalid',!emailOk);
+    if(!emailOk){
+      setStatus('Please enter a valid email address.','error');
+      return;
+    }
+
+    var endpointReady=NEWSLETTER_ENDPOINT && NEWSLETTER_ENDPOINT.length>0;
+
+    if(!endpointReady){
+      setStatus('Opening your email client to confirm — thanks!','success');
+      window.location.href='mailto:hello@deliberatelab.com?subject='+encodeURIComponent('Newsletter signup')+'&body='+encodeURIComponent('Please add this address to the newsletter list: '+email);
+      form.reset();
+      return;
+    }
+
+    submitBtn.disabled=true;
+    setStatus('Sending…','');
+
+    fetch(NEWSLETTER_ENDPOINT,{
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:'email='+encodeURIComponent(email)
+    }).then(function(){
+      setStatus('Thanks — you’re on the list.','success');
+      form.reset();
+    }).catch(function(){
+      setStatus('Something went wrong. Please email hello@deliberatelab.com.','error');
+    }).finally(function(){
+      submitBtn.disabled=false;
+    });
+  });
+
+  [emailInput].forEach(function(input){
+    input.addEventListener('input',function(){
+      if(input.classList.contains('invalid')) input.classList.remove('invalid');
     });
   });
 })();

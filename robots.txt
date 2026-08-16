@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /case-study-template.html
+Disallow: /article-template.html
+
+Sitemap: https://deliberatelab.com/sitemap.xml

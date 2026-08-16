@@ -22,6 +22,7 @@
         '<nav class="nav-links" id="navlinks">' +
           '<a href="method.html" data-page="method.html">Method</a>' +
           '<a href="services.html" data-page="services.html">Services</a>' +
+          '<a href="tools.html" data-page="tools.html">Assessment</a>' +
           '<a href="case-studies.html" data-page="case-studies.html">Case Studies</a>' +
           '<a href="about.html" data-page="about.html">About</a>' +
           '<a href="insights.html" data-page="insights.html">Insights</a>' +
@@ -46,7 +47,7 @@
               '</svg>' +
               'Deliberate&nbsp;Lab' +
             '</a>' +
-            '<p>Experimentation for considered purchases.<br>Online → offline, measured.</p>' +
+            '<p>Experimentation for considered purchases.<br>Online → the sale, measured.</p>' +
             '<div class="f-locale">' +
               '<svg class="flag-in" viewBox="0 0 30 20" width="22" height="15" role="img" aria-label="Flag of India">' +
                 '<rect x="0" y="0" width="30" height="20" fill="#ffffff"/>' +
@@ -66,6 +67,7 @@
           '</div>' +
           '<div class="f-col">' +
             '<h4>Company</h4>' +
+            '<a href="tools.html">Free Assessment</a>' +
             '<a href="about.html">About</a>' +
             '<a href="method.html">Method</a>' +
             '<a href="case-studies.html">Case Studies</a>' +

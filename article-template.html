@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!--
+  ARTICLE TEMPLATE — duplicate this file per post (e.g. article-your-slug.html).
+  Every field to fill in is wrapped in {{DOUBLE_BRACES}}. Search for "{{" to find them all.
+  Delete any optional block you don't need (blockquote, figure, code) — the takeaways
+  callout and author line are expected on every post. Once a post is real, add a
+  card + <a href> for it on insights.html (see the placeholder cards there for the pattern).
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#17191e">
+<title>{{ARTICLE_TITLE}} — Deliberate Lab</title>
+<meta name="description" content="{{META_DESCRIPTION — one sentence summarising the post}}">
+<link rel="canonical" href="https://deliberatelab.com/article-template.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Deliberate Lab">
+<meta property="og:title" content="{{ARTICLE_TITLE}}">
+<meta property="og:description" content="{{META_DESCRIPTION — one sentence summarising the post}}">
+<meta property="og:url" content="https://deliberatelab.com/article-template.html">
+<meta property="og:image" content="{{OG_IMAGE — 1200x630 social share image for this page}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="article:published_time" content="{{PUBLISH_DATE_ISO}}">
+<meta property="article:author" content="{{AUTHOR_NAME}}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ARTICLE_TITLE}}">
+<meta name="twitter:description" content="{{META_DESCRIPTION — one sentence summarising the post}}">
+<meta name="twitter:image" content="{{OG_IMAGE — 1200x630 social share image for this page}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<main>
+
+<!-- ARTICLE HERO -->
+<section class="article-hero">
+  <div class="article-wrap">
+    <a href="insights.html" class="cs-back reveal"><span class="arw">→</span> All insights</a>
+    <div class="reveal">
+      <span class="cs-tag">{{CATEGORY — Measurement / Testing / Research}}</span>
+      <h1 class="article-title">{{ARTICLE_TITLE}}</h1>
+      <p class="lead" style="max-width:60ch">{{ARTICLE_DEK — one or two sentences summarising the argument, shown under the title}}</p>
+      <div class="article-meta">
+        <span>{{PUBLISH_DATE — e.g. "August 2026"}}</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span>{{READ_TIME — e.g. "4 min read"}}</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span>By {{AUTHOR_NAME}}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE BODY -->
+<article class="section">
+  <div class="article-wrap article-body reveal">
+
+    <p>{{OPENING_PARAGRAPH — hook the reader in 2-3 sentences; state the problem plainly}}</p>
+
+    <p>{{BODY_PARAGRAPH — expand on the problem or set up the argument}}</p>
+
+    <h2>{{H2_SECTION_HEADING}}</h2>
+    <p>{{BODY_PARAGRAPH}}</p>
+
+    <blockquote>
+      {{PULL_QUOTE — a single sharp sentence worth pulling out}}
+      <cite>{{QUOTE_ATTRIBUTION — optional, delete this cite line if not needed}}</cite>
+    </blockquote>
+
+    <p>{{BODY_PARAGRAPH}}</p>
+
+    <h3>{{H3_SUBHEADING}}</h3>
+    <ul>
+      <li>{{LIST_ITEM}}</li>
+      <li>{{LIST_ITEM}}</li>
+      <li>{{LIST_ITEM}}</li>
+    </ul>
+
+    <!-- optional — delete this <figure> entirely if the post doesn't need a visual -->
+    <figure class="article-figure">
+      <div class="placeholder-box" style="min-height:260px">{{FIGURE — screenshot, chart or diagram}}</div>
+      <figcaption>{{FIGURE_CAPTION}}</figcaption>
+    </figure>
+
+    <p>{{BODY_PARAGRAPH}}</p>
+
+    <!-- optional — delete this <pre> entirely if the post doesn't need a code/config snippet -->
+    <pre><code>{{CODE_SNIPPET}}</code></pre>
+
+    <h2>{{H2_SECTION_HEADING}}</h2>
+    <p>{{BODY_PARAGRAPH}}</p>
+    <p>{{CLOSING_PARAGRAPH — land the argument, don't just trail off}}</p>
+
+    <div class="takeaways">
+      <h3>Key takeaways</h3>
+      <ul class="check-list">
+        <li>{{TAKEAWAY_1}}</li>
+        <li>{{TAKEAWAY_2}}</li>
+        <li>{{TAKEAWAY_3}}</li>
+      </ul>
+    </div>
+
+    <div class="article-author">
+      <div class="article-author-avatar">{{AUTHOR_PHOTO}}</div>
+      <div>
+        <div class="article-author-name">{{AUTHOR_NAME}}</div>
+        <div class="article-author-role">{{AUTHOR_ROLE — e.g. "Founder, Deliberate Lab"}}</div>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+<!-- CTA BAND -->
+<section class="cta-band" id="book">
+  <div class="wrap reveal">
+    <span class="eyebrow" style="justify-content:center;margin-bottom:22px">Start the conversation</span>
+    <h2>{{CTA_HEADLINE — e.g. "Ready to see this on your own funnel?"}}</h2>
+    <p class="lead">Start with a discovery call. If there's a fit, the Deliberate Audit is your first step — and your roadmap is yours to keep either way.</p>
+    <a href="mailto:hello@deliberatelab.com" class="btn js-book-cta">Book a discovery call <span class="arw">→</span></a>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER + BOOK A CALL MODAL (injected by js/partials.js) -->
+<div id="site-footer"></div>
+
+<script src="js/partials.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/motion.js" defer></script>
+<script src="js/transitions.js" defer></script>
+</body>
+</html>

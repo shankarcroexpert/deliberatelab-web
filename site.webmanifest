@@ -1,0 +1,14 @@
+{
+  "name": "Deliberate Lab",
+  "short_name": "Deliberate Lab",
+  "description": "Experimentation for considered purchases — measured online to offline.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#17191e",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

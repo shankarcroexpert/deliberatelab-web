@@ -3,8 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#17191e">
 <title>Case Studies — Deliberate Lab</title>
-<meta name="description" content="Results from Deliberate Lab's experimentation programs — online lift and offline lift, wins and losses alike.">
+<meta name="description" content="Founding-client results from Deliberate Lab, reported in full as they land — online lift and lift at the sale, wins and losses alike.">
+<link rel="canonical" href="https://deliberatelab.com/case-studies.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Deliberate Lab">
+<meta property="og:title" content="Case Studies">
+<meta property="og:description" content="Founding-client results from Deliberate Lab, reported in full as they land — online lift and lift at the sale, wins and losses alike.">
+<meta property="og:url" content="https://deliberatelab.com/case-studies.html">
+<meta property="og:image" content="{{OG_IMAGE — 1200x630 social share image for this page}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Case Studies">
+<meta name="twitter:description" content="Founding-client results from Deliberate Lab, reported in full as they land — online lift and lift at the sale, wins and losses alike.">
+<meta name="twitter:image" content="{{OG_IMAGE — 1200x630 social share image for this page}}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -14,24 +32,107 @@
 
 <div id="site-header"></div>
 
+<main>
+
 <!-- CASE STUDIES HERO -->
 <section class="section page-hero">
   <div class="wrap">
     <div class="reveal" style="max-width:720px">
       <div class="exhibit"><b>Case Studies</b></div>
-      <span class="tag-soon">Coming soon</span>
-      <h1>Proof, as it lands.</h1>
-      <p class="lead">Deliberate Lab is new, and our founding clients’ results will be published here as they come in — full write-ups, online lift and offline lift, wins and losses alike. Check back soon, or book a call to hear where things stand today.</p>
+      <span class="tag-soon">Founding cohort · results reported live</span>
+      <h1>Founding-client results, as they land.</h1>
+      <p class="lead">Deliberate Lab is new, and we won't pretend otherwise. Instead of borrowing someone else's logos, we're publishing our own founding engagements here — in full, as they land. Online lift and lift at the sale, wins and losses alike.</p>
       <a href="#book" class="btn js-book-cta">Book a discovery call <span class="arw">→</span></a>
     </div>
   </div>
 </section>
 
+<!-- 01 THE COHORT -->
+<section class="section" id="cohort" style="padding-top:0">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="exhibit">01 — <b>The founding cohort</b></div>
+      <h2 style="max-width:22ch">Three engagements underway, filterable by sector.</h2>
+      <p class="lead">Each card below is a real, currently-running engagement. We're naming the sector and the challenge now — the scorecard fills in as measurement completes, honestly, whichever way it lands.</p>
+
+      <div class="cs-filters" role="group" aria-label="Filter case studies by sector" id="csFilters">
+        <button type="button" class="cs-filter-btn active" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="cs-filter-btn" data-filter="automotive" aria-pressed="false">Automotive</button>
+        <button type="button" class="cs-filter-btn" data-filter="real-estate" aria-pressed="false">Real Estate</button>
+        <button type="button" class="cs-filter-btn" data-filter="bfsi" aria-pressed="false">BFSI</button>
+        <button type="button" class="cs-filter-btn" data-filter="luxury" aria-pressed="false">Luxury</button>
+        <button type="button" class="cs-filter-btn" data-filter="education" aria-pressed="false">Education</button>
+      </div>
+    </div>
+
+    <div class="cs-grid reveal" data-stagger id="csGrid">
+      <!-- CARD 1 — swap in the real result by replacing the status pill, the copy,
+           and adding a "Read the full case study" link to that client's page
+           once measurement completes. Structure otherwise stays identical. -->
+      <article class="cs-card" data-sector="automotive">
+        <div class="cs-card-top">
+          <span class="eyebrow" style="margin-bottom:0">Automotive</span>
+          <span class="cs-status"><i class="dot" aria-hidden="true"></i>In progress — founding client</span>
+        </div>
+        <h3>Configurator-to-test-drive journey</h3>
+        <p>A founding automotive client's online configurator was generating enquiries, but too few converted into a booked test drive. We're running research-led experiments on the configurator-to-showroom path and measuring lift through to attributed test-drives.</p>
+        <div class="cs-card-foot">
+          <span class="cs-tag">Measurement live</span>
+          <a href="#book" class="link js-book-cta">Ask about this one <span class="arw">→</span></a>
+        </div>
+      </article>
+
+      <!-- CARD 2 -->
+      <article class="cs-card" data-sector="bfsi">
+        <div class="cs-card-top">
+          <span class="eyebrow" style="margin-bottom:0">BFSI</span>
+          <span class="cs-status"><i class="dot" aria-hidden="true"></i>In progress — founding client</span>
+        </div>
+        <h3>Loan-enquiry to disbursement journey</h3>
+        <p>A founding financial-services client wanted to know whether online enquiry improvements actually moved disbursed value, not just form completions. We're testing trust and clarity changes on the application journey and tracking the loop back to disbursement.</p>
+        <div class="cs-card-foot">
+          <span class="cs-tag">Measurement live</span>
+          <a href="#book" class="link js-book-cta">Ask about this one <span class="arw">→</span></a>
+        </div>
+      </article>
+
+      <!-- CARD 3 -->
+      <article class="cs-card" data-sector="real-estate">
+        <div class="cs-card-top">
+          <span class="eyebrow" style="margin-bottom:0">Real Estate</span>
+          <span class="cs-status"><i class="dot" aria-hidden="true"></i>In progress — founding client</span>
+        </div>
+        <h3>Site-visit booking journey</h3>
+        <p>A founding real-estate client had strong project-page traffic but a soft site-visit booking rate. We're experimenting on the booking flow and measuring lift all the way through to a confirmed visit at the counter.</p>
+        <div class="cs-card-foot">
+          <span class="cs-tag">Measurement live</span>
+          <a href="#book" class="link js-book-cta">Ask about this one <span class="arw">→</span></a>
+        </div>
+      </article>
+    </div>
+
+    <p class="cs-empty" id="csEmpty" role="status" aria-live="polite" hidden>No founding engagements in this sector yet — <a href="#book" class="js-book-cta">be the first</a>.</p>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band" id="book">
+  <div class="wrap reveal">
+    <span class="eyebrow" style="justify-content:center;margin-bottom:22px">Start the conversation</span>
+    <h2>Want your result to be the next one published here?</h2>
+    <p class="lead">Founding clients get the same rigour as every future engagement — plus first billing on this page. Start with a discovery call.</p>
+    <a href="mailto:hello@deliberatelab.com" class="btn js-book-cta">Book a discovery call <span class="arw">→</span></a>
+  </div>
+</section>
+
+</main>
+
 <!-- FOOTER + BOOK A CALL MODAL (injected by js/partials.js) -->
 <div id="site-footer"></div>
 
-<script src="js/partials.js"></script>
-<script src="js/main.js"></script>
-<script src="js/motion.js"></script>
+<script src="js/partials.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/motion.js" defer></script>
+<script src="js/transitions.js" defer></script>
 </body>
 </html>
