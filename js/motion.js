@@ -53,7 +53,8 @@
     if(reduceMotion) return;
 
     document.querySelectorAll('.diagram').forEach(function(svg){
-      svg.querySelectorAll('.fig-arc').forEach(function(path){
+      var arcs = svg.querySelectorAll('.fig-arc');
+      arcs.forEach(function(path){
         var len = path.getTotalLength();
         if(!path.getAttribute('stroke-dasharray')){
           path.style.strokeDasharray = len; // solid arcs need a dash pattern to draw with
@@ -63,11 +64,21 @@
 
       svg.classList.add('fig-armed');
 
-      if(!hasIO){ svg.classList.add('fig-draw'); return; }
+      // Inline styles always beat stylesheet rules, so the CSS class below
+      // can't be trusted to reset stroke-dashoffset back to 0 on its own —
+      // JS has to do it directly. The CSS transition on .fig-armed .fig-arc
+      // still animates this change smoothly; only the *source* of the "0"
+      // value needs to be inline to actually win the cascade.
+      function reveal(){
+        arcs.forEach(function(path){ path.style.strokeDashoffset = 0; });
+        svg.classList.add('fig-draw');
+      }
+
+      if(!hasIO){ reveal(); return; }
       var io = new IntersectionObserver(function(entries, obs){
         entries.forEach(function(entry){
           if(entry.isIntersecting){
-            svg.classList.add('fig-draw');
+            reveal();
             obs.unobserve(entry.target);
           }
         });
