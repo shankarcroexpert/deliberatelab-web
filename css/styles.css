@@ -150,6 +150,23 @@ header.scrolled{border-bottom:1px solid var(--hairline)}
 .sectors .items span{position:relative}
 .sectors .items span:not(:last-child)::after{content:"·";margin-left:26px;color:var(--gold-line)}
 
+/* ---------- sector strip: marquee variant (homepage only — see "generic section" below for other .sectors reuses) ---------- */
+.sectors-row{display:flex;align-items:center;gap:28px;padding:22px 0}
+.marquee{
+  flex:1;min-width:0;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent);
+}
+.marquee-track{display:flex;width:max-content;animation:marquee-scroll 34s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-group{display:flex;align-items:center;flex:none}
+.marquee-group span{font-family:var(--serif);font-size:17px;color:var(--ink);white-space:nowrap}
+.marquee-group span.dot{margin:0 26px;color:var(--gold-line);font-family:var(--serif)}
+@keyframes marquee-scroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
 /* ---------- generic section ---------- */
 .section{padding:96px 0;border-bottom:1px solid var(--hairline)}
 .section.warm{background:var(--paper-2)}
@@ -757,6 +774,8 @@ svg.diagram.fig-armed.fig-draw .fig-badge{opacity:1;transform:none}
 }
 @media(max-width:640px){
   .wrap{padding:0 22px}
+  .sectors-row{flex-direction:column;align-items:flex-start;gap:12px}
+  .marquee{width:100%}
   .hero{padding:48px 0 40px}
   .page-hero{padding:88px 0 56px}
   .section{padding:64px 0}
@@ -804,6 +823,9 @@ svg.diagram.fig-armed.fig-draw .fig-badge{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){
   *{scroll-behavior:auto}
   .reveal,.reveal[data-stagger] > *{transition:none;opacity:1;transform:none}
+  .marquee-track{animation:none}
+  .marquee-group[aria-hidden="true"]{display:none}
+  .marquee{overflow-x:auto}
   .hero-copy.motion-hero .eyebrow,
   .hero-copy.motion-hero .lead,
   .hero-copy.motion-hero .cta-row,
