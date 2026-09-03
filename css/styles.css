@@ -135,7 +135,11 @@ header.scrolled{border-bottom:1px solid var(--hairline)}
 /* ---------- hero ---------- */
 .hero{padding:78px 0 64px}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
-.hero h1{font-size:clamp(38px,5.2vw,68px);margin:22px 0 26px}
+/* base size fits the narrower single-column heroes (method/services/tools/insights/about/case-studies);
+   the homepage's two-column hero-grid gets the larger size below since its column is proportioned for it —
+   without this split, that one big size forced 3-line wraps and left a lot of empty space in the narrower heroes */
+.hero h1{font-size:clamp(30px,3.8vw,46px);margin:22px 0 26px}
+.hero-grid .hero-copy h1{font-size:clamp(38px,5.2vw,68px)}
 .hero h1 em{font-style:italic;color:var(--gold);font-weight:500}
 .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
 .hero .foot-note{margin-top:30px;font-family:var(--mono);font-size:12.5px;letter-spacing:.03em;color:var(--ink-45);display:flex;align-items:center;gap:10px}
@@ -183,6 +187,121 @@ header.scrolled{border-bottom:1px solid var(--hairline)}
 .contrast .v{font-family:var(--serif);font-size:22px}
 .contrast .v.dim{color:var(--ink-45)}
 .contrast .v.hit{color:var(--gold)}
+
+/* ---------- hero: outcome word-cycler ---------- */
+.hero-cycle-line{font-family:var(--sans);font-size:16px;color:var(--ink-70);margin-top:16px}
+.word-cycle{display:inline-block;color:var(--gold);font-weight:600}
+
+/* ---------- friction, visualised ---------- */
+.friction-row-top{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.fric-tile{
+  border:1px solid var(--hairline);border-radius:3px;background:#fff;
+  padding:20px 22px 24px;display:flex;flex-direction:column;
+  transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.fric-tile:hover{border-color:var(--gold-line);box-shadow:0 14px 32px rgba(23,25,30,.08);transform:translateY(-2px)}
+.fric-stage{border-radius:3px;overflow:hidden;margin-bottom:18px}
+.fric-svg{width:100%;height:auto;display:block}
+.fric-title{font-size:19px;font-weight:600;margin-bottom:8px}
+.fric-cost{font-size:14px;color:var(--ink-70)}
+.fric-tile-signature{margin-top:24px;padding:28px 30px 32px}
+.fric-tile-signature .fric-title{font-size:23px;margin-top:4px}
+.fric-tile-signature .fric-cost{font-size:15.5px;max-width:56ch}
+.fric-stage-signature{margin-bottom:22px}
+.friction-close{margin-top:44px;padding-top:34px;border-top:1px solid var(--hairline);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.friction-close-line{font-family:var(--serif);font-size:19px;color:var(--ink);max-width:52ch}
+
+/* fric1 — rage clicks */
+.fric1-cursor{transform:translate(126px,74px);animation:fric1-cursor-move 4.5s ease-in-out infinite}
+@keyframes fric1-cursor-move{
+  0%,7%{transform:translate(126px,74px)}
+  9%{transform:translate(126px,76px)}
+  11%,29%{transform:translate(126px,74px)}
+  31%{transform:translate(126px,76px)}
+  33%,51%{transform:translate(126px,74px)}
+  53%{transform:translate(126px,76px)}
+  55%,70%{transform:translate(126px,74px)}
+  90%{transform:translate(180px,108px)}
+  100%{transform:translate(126px,74px)}
+}
+.fric1-burst{opacity:0;transform-origin:118px 71px;animation:fric1-burst-pulse 4.5s ease-out infinite}
+.fric1-burst-1{animation-delay:.15s}
+.fric1-burst-2{animation-delay:1.65s}
+.fric1-burst-3{animation-delay:3.15s}
+@keyframes fric1-burst-pulse{
+  0%{opacity:0;transform:scale(.5)}
+  6%{opacity:1;transform:scale(.6)}
+  22%{opacity:0;transform:scale(1.7)}
+  100%{opacity:0;transform:scale(1.7)}
+}
+
+/* fric2 — the abandoned form */
+.fric2-fill{animation-duration:6s;animation-timing-function:ease-in-out;animation-iteration-count:infinite}
+.fric2-fill-1{animation-name:fric2-fill-1-anim}
+.fric2-fill-2{animation-name:fric2-fill-2-anim}
+.fric2-fill-3{animation-name:fric2-fill-3-anim}
+@keyframes fric2-fill-1-anim{
+  0%{width:0}
+  12%,100%{width:152px}
+}
+@keyframes fric2-fill-2-anim{
+  0%,12%{width:0}
+  24%,78%{width:152px}
+  88%,100%{width:0}
+}
+@keyframes fric2-fill-3-anim{
+  0%,24%{width:0}
+  36%,78%{width:152px}
+  88%,100%{width:0}
+}
+.fric2-cursor{animation:fric2-cursor-move 6s ease-in-out infinite}
+@keyframes fric2-cursor-move{
+  0%{transform:translate(186px,20px)}
+  12%{transform:translate(186px,20px)}
+  24%{transform:translate(186px,50px)}
+  36%,60%{transform:translate(186px,80px)}
+  75%,86%{transform:translate(180px,10px)}
+  100%{transform:translate(186px,20px)}
+}
+.fric2-x{opacity:0;animation:fric2-x-fade 6s ease-in-out infinite}
+@keyframes fric2-x-fade{
+  0%,68%{opacity:0}
+  78%,90%{opacity:1}
+  100%{opacity:0}
+}
+
+/* fric3 — comparison paralysis */
+.fric3-tab{fill:#f7f4ee;animation:fric3-tab-active 4.5s ease-in-out infinite}
+.fric3-tab-1{animation-delay:0s}
+.fric3-tab-2{animation-delay:1.5s}
+.fric3-tab-3{animation-delay:3s}
+@keyframes fric3-tab-active{
+  0%{fill:#f7f4ee}
+  8%,25%{fill:#ffffff}
+  33%,100%{fill:#f7f4ee}
+}
+.fric3-spinner-arc{transform-origin:110px 88px;animation:fric3-spin 1s linear infinite}
+@keyframes fric3-spin{to{transform:rotate(360deg)}}
+
+/* fric4 — the blind handoff (signature) */
+.fric4-dot-lost{animation:fric4-dot-lost-move 5s ease-in-out infinite}
+@keyframes fric4-dot-lost-move{
+  0%{transform:translateX(0);opacity:1}
+  40%{transform:translateX(210px);opacity:1}
+  48%{transform:translateX(210px);opacity:0}
+  100%{transform:translateX(210px);opacity:0}
+}
+.fric4-dot-held{animation:fric4-dot-held-move 5s ease-in-out infinite}
+@keyframes fric4-dot-held-move{
+  0%{transform:translateX(0)}
+  82%,100%{transform:translateX(420px)}
+}
+.fric4-pulse{opacity:0;transform-origin:440px 140px;animation:fric4-pulse-ring 5s ease-out infinite}
+@keyframes fric4-pulse-ring{
+  0%,80%{opacity:0;transform:scale(1)}
+  88%{opacity:.85;transform:scale(1.35)}
+  100%{opacity:0;transform:scale(2)}
+}
 
 /* loop section */
 .loop-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:60px;align-items:center}
@@ -751,7 +870,7 @@ svg.diagram.fig-armed.fig-draw .fig-badge{opacity:1;transform:none}
   .steps{grid-template-columns:1fr 1fr}
   .step{border-bottom:1px solid var(--hairline)}
   .step:nth-child(2){border-right:0}
-  .cards,.pillars,.cs-grid{grid-template-columns:1fr}
+  .cards,.pillars,.cs-grid,.friction-row-top{grid-template-columns:1fr}
   .f-top{grid-template-columns:1fr 1fr}
   .f-brand{grid-column:1/-1}
   .subservices{grid-template-columns:1fr 1fr}
@@ -782,6 +901,9 @@ svg.diagram.fig-armed.fig-draw .fig-badge{opacity:1;transform:none}
   .steps{grid-template-columns:1fr}
   .step{border-right:0}
   .contrast{gap:28px}
+  .friction-row-top{gap:16px;margin-top:34px}
+  .fric-tile-signature{padding:22px 20px 26px}
+  .friction-close{flex-direction:column;align-items:flex-start;gap:18px}
   .f-top{grid-template-columns:1fr}
   .readout{padding:24px 20px}
   .readout .rrow{gap:10px}
@@ -826,6 +948,19 @@ svg.diagram.fig-armed.fig-draw .fig-badge{opacity:1;transform:none}
   .marquee-track{animation:none}
   .marquee-group[aria-hidden="true"]{display:none}
   .marquee{overflow-x:auto}
+  /* friction, visualised — freeze each vignette on its clearest storytelling frame */
+  .fric-tile:hover{transform:none}
+  .fric1-cursor,.fric1-burst,.fric2-fill,.fric2-cursor,.fric2-x,
+  .fric3-tab,.fric3-spinner-arc,.fric4-dot-lost,.fric4-dot-held,.fric4-pulse{animation:none}
+  .fric1-burst-1{opacity:1;transform:scale(1.1)}
+  .fric1-burst-2,.fric1-burst-3{opacity:0}
+  .fric2-fill-1,.fric2-fill-2{width:152px}
+  .fric2-fill-3{width:0}
+  .fric2-cursor{transform:translate(180px,10px)}
+  .fric2-x{opacity:.65}
+  .fric4-dot-lost{transform:translateX(210px);opacity:.35}
+  .fric4-dot-held{transform:translateX(420px)}
+  .fric4-pulse{opacity:.7;transform:scale(1.2)}
   .hero-copy.motion-hero .eyebrow,
   .hero-copy.motion-hero .lead,
   .hero-copy.motion-hero .cta-row,

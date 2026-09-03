@@ -213,6 +213,45 @@
     window.addEventListener('resize', update);
   }
 
+  /* ---------- 8. hero outcome word-cycler (index.html only) ---------- */
+  function initWordCycler(){
+    var el = document.getElementById('heroWordCycle');
+    if(!el) return;
+
+    var words = [];
+    try{ words = JSON.parse(el.getAttribute('data-words') || '[]'); }catch(e){ words = []; }
+    if(words.length < 2) return; // first word is already the static HTML content — nothing to cycle
+
+    if(reduceMotion){
+      el.textContent = words[0]; // static, no announcements, no motion
+      return;
+    }
+
+    var i = 0;
+    var OUT_MS = 250, INTERVAL_MS = 1600;
+
+    function cycle(){
+      el.style.transition = 'opacity ' + OUT_MS + 'ms ease, transform ' + OUT_MS + 'ms ease';
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(-6px)';
+      window.setTimeout(function(){
+        i = (i + 1) % words.length;
+        el.textContent = words[i]; // aria-live="polite" on this element announces the change
+        el.style.transition = 'none';
+        el.style.transform = 'translateY(6px)';
+        requestAnimationFrame(function(){
+          requestAnimationFrame(function(){
+            el.style.transition = 'opacity ' + OUT_MS + 'ms ease, transform ' + OUT_MS + 'ms ease';
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+          });
+        });
+      }, OUT_MS);
+    }
+
+    window.setInterval(cycle, INTERVAL_MS);
+  }
+
   initHeroEntrance();
   initDiagrams();
   initStaggerReveals();
@@ -221,4 +260,5 @@
   initMagneticButtons();
   initActiveNav();
   initScrollProgress();
+  initWordCycler();
 })();
