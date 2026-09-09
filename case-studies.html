@@ -117,6 +117,45 @@
   </div>
 </section>
 
+<!-- RESULTS -->
+<section class="section warm" id="results">
+  <div class="wrap">
+    <div class="reveal" style="max-width:640px;margin:0 auto;text-align:center">
+      <span class="eyebrow" style="justify-content:center">Results</span>
+      <h2>Founding-client results, reported in full, as they land.</h2>
+    </div>
+    <div class="reveal" style="margin-top:44px">
+      <div class="result-card" id="resultCard">
+
+        <!-- PENDING STATE — the honest default. Stays visible until js/result-card.js
+             finds RESULT.state set to 'live', at which point it swaps in the block below. -->
+        <div id="resultPending">
+          <div class="result-quote-mark" aria-hidden="true">“</div>
+          <p class="result-pending-text">We're onboarding our first founding clients now. When their experiments run, the outcomes (wins and losses, online lift and lift at the sale) will appear here exactly as they happened. No cherry-picking. Want to be one of them?</p>
+          <a href="#book" class="btn js-book-cta">Become a founding client <span class="arw">→</span></a>
+        </div>
+
+        <!-- LIVE STATE — hidden until a real result exists. -->
+        <div id="resultLive" hidden>
+          <blockquote class="result-quote"></blockquote>
+          <div class="result-metric">
+            <span class="result-metric-value"></span>
+            <span class="result-metric-label"></span>
+          </div>
+          <div class="result-person">
+            <div class="result-person-info">
+              <span class="result-name"></span>
+              <span class="result-role"></span>
+            </div>
+            <img class="result-logo" alt="" hidden>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA BAND -->
 <section class="cta-band" id="book">
   <div class="wrap reveal">
@@ -136,5 +175,6 @@
 <script src="js/main.js" defer></script>
 <script src="js/motion.js" defer></script>
 <script src="js/transitions.js" defer></script>
+<script src="js/result-card.js" defer></script>
 </body>
 </html>

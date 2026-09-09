@@ -26,6 +26,7 @@
           '<a href="case-studies.html" data-page="case-studies.html">Case Studies</a>' +
           '<a href="about.html" data-page="about.html">About</a>' +
           '<a href="insights.html" data-page="insights.html">Insights</a>' +
+          '<a href="resources.html" data-page="resources.html">Resources</a>' +
         '</nav>' +
         '<div class="nav-cta">' +
           '<a href="#book" class="btn js-book-cta">Book a call <span class="arw">→</span></a>' +
@@ -68,6 +69,7 @@
           '<div class="f-col">' +
             '<h4>Company</h4>' +
             '<a href="tools.html">Free Assessment</a>' +
+            '<a href="resources.html">Resources</a>' +
             '<a href="about.html">About</a>' +
             '<a href="method.html">Method</a>' +
             '<a href="case-studies.html">Case Studies</a>' +
@@ -75,7 +77,7 @@
           '</div>' +
           '<div class="f-col">' +
             '<h4>Services</h4>' +
-            '<a href="services.html#audit">The Deliberate Audit</a>' +
+            '<a href="deliberate-audit.html">The Deliberate Audit</a>' +
             '<a href="services.html#program">The Deliberate Program</a>' +
             '<a href="services.html#on-demand">On-demand</a>' +
           '</div>' +
@@ -83,6 +85,7 @@
             '<h4>Contact</h4>' +
             '<a href="mailto:info@deliberatelab.com">info@deliberatelab.com</a>' +
             '<a href="#book" class="js-book-cta">Book a call</a>' +
+            '<a href="contact.html">Send a message</a>' +
             '<a href="#">LinkedIn</a>' +
           '</div>' +
         '</div>' +

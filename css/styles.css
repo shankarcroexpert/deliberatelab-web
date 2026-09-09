@@ -141,7 +141,8 @@ header.scrolled{border-bottom:1px solid var(--hairline)}
 .hero h1{font-size:clamp(30px,3.8vw,46px);margin:22px 0 26px}
 .hero-grid .hero-copy h1{font-size:clamp(38px,5.2vw,68px)}
 .hero h1 em{font-style:italic;color:var(--gold);font-weight:500}
-.hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.audit-copy .cta-row{margin-top:26px}
 .hero .foot-note{margin-top:30px;font-family:var(--mono);font-size:12.5px;letter-spacing:.03em;color:var(--ink-45);display:flex;align-items:center;gap:10px}
 .tickline{display:inline-block;width:1px;height:13px;background:var(--gold-line)}
 .diagram{width:100%;height:auto;display:block}
@@ -303,6 +304,28 @@ header.scrolled{border-bottom:1px solid var(--hairline)}
   100%{opacity:0;transform:scale(2)}
 }
 
+/* ---------- the problem, in numbers ---------- */
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;margin-top:48px}
+.stat-block{display:flex;flex-direction:column}
+.stat-figure{
+  font-family:var(--serif);font-weight:600;color:var(--ink);line-height:1.05;
+  font-size:clamp(38px,4.2vw,56px);position:relative;padding-bottom:18px;margin-bottom:16px;
+}
+.stat-figure::after{content:"";position:absolute;left:0;bottom:0;width:52px;height:3px;background:var(--gold-line)}
+.stat-figure-text{font-size:clamp(23px,2.4vw,30px);max-width:12ch}
+.stat-label{font-family:var(--sans);font-size:15px;color:var(--ink-70);max-width:34ch}
+.stat-source{font-family:var(--mono);font-size:11px;letter-spacing:.03em;color:var(--ink-45);margin-top:14px}
+.stats-closing{margin-top:40px;padding-top:26px;border-top:1px solid var(--hairline)}
+
+/* ---------- founder-presence band ---------- */
+.founder-photo.placeholder-box{border:1px solid var(--gold-line)}
+.chip-row{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 26px}
+.chip{
+  display:inline-flex;align-items:center;font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;
+  color:var(--ink-70);background:var(--paper-2);border:1px solid var(--hairline);
+  padding:8px 14px;border-radius:20px;line-height:1.3;
+}
+
 /* loop section */
 .loop-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:60px;align-items:center}
 .loop-copy h2{max-width:16ch;margin-bottom:22px}
@@ -355,6 +378,13 @@ header.scrolled{border-bottom:1px solid var(--hairline)}
 .card .price{font-family:var(--mono);font-size:12.5px;color:var(--ink-45);margin-bottom:16px}
 .card.feature .price{color:#b7b3aa}
 .card p{font-size:15px;flex:1}
+.variant-cards{grid-template-columns:repeat(2,1fr)}
+.variant-tag{display:inline-block;background:var(--gold-wash);padding:4px 10px;border-radius:2px;margin:0 8px 10px 0}
+.card.feature .variant-tag{background:rgba(201,162,75,.16)}
+
+/* ---------- pick your variant intro strip (services.html) ---------- */
+.variant-intro{border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);background:var(--paper-2);padding:34px 0;text-align:center}
+.variant-tagline{font-family:var(--serif);font-size:18px;color:var(--ink);margin-top:14px}
 .card .link{margin-top:22px;font-weight:600;font-size:14.5px;display:inline-flex;align-items:center;gap:8px;color:var(--ink)}
 .card .link .arw{color:var(--gold);transition:transform .18s ease}
 .card:hover .link .arw{transform:translateX(3px)}
@@ -504,6 +534,24 @@ header.scrolled{border-bottom:1px solid var(--hairline)}
 .tl-body h3{font-size:22px;margin-bottom:10px;font-weight:600}
 .tl-body p{font-size:15px;max-width:64ch}
 
+/* ---------- deliberate-audit page: research list ---------- */
+.research-list{margin-top:44px;border-top:1px solid var(--hairline)}
+.research-item{display:grid;grid-template-columns:56px 1fr;gap:24px;padding:26px 12px;border-bottom:1px solid var(--hairline);border-radius:3px}
+.research-item:last-child{border-bottom:0}
+.research-num{font-family:var(--mono);font-size:13px;color:var(--ink-45);padding-top:3px}
+.research-body h3{font-size:18px;font-weight:600;color:var(--ink)}
+.research-sub{font-family:var(--mono);font-size:11.5px;color:var(--ink-45);font-weight:400;margin-left:6px}
+.research-body p{margin-top:6px;font-size:14.5px;color:var(--ink-70);max-width:62ch}
+.research-item-highlight{background:var(--gold-wash);box-shadow:inset 3px 0 0 var(--gold-line);border-bottom-color:transparent}
+.research-item-highlight .research-num{color:var(--gold)}
+
+/* ---------- deliberate-audit page: dossier (deliverables), a .readout variant ---------- */
+.dossier .d-row{display:grid;grid-template-columns:40px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.08);align-items:start}
+.dossier .d-row:last-child{border-bottom:0}
+.dossier .d-num{font-family:var(--serif);font-size:22px;color:var(--gold-line);flex:none}
+.dossier .d-body h3{font-family:var(--sans);font-size:16px;font-weight:600;color:#f2efe8;margin-bottom:4px}
+.dossier .d-body p{font-family:var(--sans);font-size:13.5px;color:#a7a399;line-height:1.5}
+
 /* ---------- method page: PROOF Score calculator ---------- */
 .calc{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start;margin-top:48px}
 .calc-row{margin-bottom:28px}
@@ -566,6 +614,26 @@ header.scrolled{border-bottom:1px solid var(--hairline)}
 .cs-empty{margin-top:8px;font-size:15px;color:var(--ink-45)}
 .cs-empty a{color:var(--gold);text-decoration:underline;text-underline-offset:3px}
 @keyframes csPulse{0%,100%{opacity:1}50%{opacity:.25}}
+
+/* ---------- results card (case-studies.html) — swap in a real result by
+   editing the RESULT object at the top of js/result-card.js; everything
+   here renders from that one object once RESULT.state is set to 'live' ---------- */
+.result-card{
+  border:1px solid var(--hairline);border-radius:4px;background:#fff;
+  padding:48px 44px;text-align:center;max-width:720px;margin:0 auto;
+}
+.result-quote-mark{font-family:var(--serif);font-size:56px;color:var(--gold-line);line-height:1;margin-bottom:6px}
+.result-pending-text{font-family:var(--serif);font-size:clamp(19px,1.8vw,23px);color:var(--ink);line-height:1.55;max-width:52ch;margin:0 auto 30px}
+.result-quote{font-family:var(--serif);font-style:italic;font-size:clamp(20px,2vw,25px);color:var(--ink);line-height:1.55;max-width:52ch;margin:0 auto 30px}
+.result-metric{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:28px}
+.result-metric-value{font-family:var(--serif);font-weight:600;font-size:clamp(44px,5vw,64px);color:var(--ink);line-height:1;position:relative;padding-bottom:16px}
+.result-metric-value::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:52px;height:3px;background:var(--gold-line)}
+.result-metric-label{font-family:var(--sans);font-size:14px;color:var(--ink-70)}
+.result-person{display:flex;align-items:center;justify-content:center;gap:14px;padding-top:22px;border-top:1px solid var(--hairline)}
+.result-person-info{text-align:left}
+.result-name{display:block;font-family:var(--sans);font-weight:600;font-size:15px;color:var(--ink)}
+.result-role{display:block;font-family:var(--mono);font-size:11px;color:var(--ink-45);margin-top:2px}
+.result-logo{height:26px;width:auto;margin-left:8px}
 
 /* ---------- case study template: scorecard component (dark panel, reused per-case) ---------- */
 .scorecard{background:var(--ink);color:#fff;border-radius:4px;padding:34px 36px;font-family:var(--mono)}
@@ -771,27 +839,41 @@ body.modal-open,body.nav-open{overflow:hidden}
 .modal .eyebrow{margin-bottom:14px}
 .modal h3{font-size:clamp(23px,3vw,28px);margin-bottom:8px}
 .modal-sub{font-size:14.5px;color:var(--ink-70);margin-bottom:26px;max-width:38ch}
-.modal .field{margin-bottom:18px}
-.modal label{
+/* .form-panel shares every one of these rules with .modal (the booking form) —
+   the contact page's form reuses this exact input/label/status system so both
+   forms always look and behave identically. */
+.modal .field,.form-panel .field{margin-bottom:18px}
+.modal label,.form-panel label{
   display:block;font-family:var(--mono);font-size:11px;letter-spacing:.1em;
   text-transform:uppercase;color:var(--ink-45);margin-bottom:7px;
 }
-.modal input[type="text"],.modal input[type="tel"]{
+.modal input[type="text"],.modal input[type="tel"],
+.form-panel input[type="text"],.form-panel input[type="email"],.form-panel select,.form-panel textarea{
   width:100%;padding:13px 14px;border:1px solid var(--hairline);border-radius:3px;
   font-family:var(--sans);font-size:15.5px;color:var(--ink);background:#fff;
   transition:border-color .18s ease, box-shadow .18s ease;
 }
-.modal input::placeholder{color:#7c7667}
-.modal input:focus{outline:none;border-color:var(--gold-line);box-shadow:0 0 0 3px rgba(201,162,75,.16)}
-.modal input.invalid{border-color:#b3403a}
-.modal .err{display:none;margin-top:6px;font-size:12.5px;color:#b3403a}
-.modal input.invalid + .err{display:block}
+.form-panel textarea{resize:vertical;min-height:100px;line-height:1.5}
+.form-panel select{
+  appearance:none;-webkit-appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%234b4f57' fill='none' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;
+}
+.form-panel select:invalid{color:#7c7667}
+.modal input::placeholder,.form-panel input::placeholder,.form-panel textarea::placeholder{color:#7c7667}
+.modal input:focus,.form-panel input:focus,.form-panel select:focus,.form-panel textarea:focus{outline:none;border-color:var(--gold-line);box-shadow:0 0 0 3px rgba(201,162,75,.16)}
+.modal input.invalid,.form-panel input.invalid,.form-panel select.invalid{border-color:#b3403a}
+.modal .err,.form-panel .err{display:none;margin-top:6px;font-size:12.5px;color:#b3403a}
+.modal input.invalid + .err,.form-panel input.invalid + .err,.form-panel select.invalid + .err{display:block}
 .hp-field{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden}
-.modal-submit{width:100%;justify-content:center;margin-top:6px}
-.modal-submit:disabled{opacity:.65;cursor:default;transform:none}
-.modal-status{margin-top:14px;text-align:center;font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;min-height:16px;color:var(--ink-45)}
-.modal-status.success{color:var(--gold)}
-.modal-status.error{color:#b3403a}
+.modal-submit,.form-panel .btn[type="submit"]{width:100%;justify-content:center;margin-top:6px}
+.modal-submit:disabled,.form-panel .btn[type="submit"]:disabled{opacity:.65;cursor:default;transform:none}
+.modal-status,.form-status{margin-top:14px;text-align:center;font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;min-height:16px;color:var(--ink-45)}
+.modal-status.success,.form-status.success{color:var(--gold)}
+.modal-status.error,.form-status.error{color:#b3403a}
+
+/* ---------- contact page: standalone form panel (reuses .split for the grid) ---------- */
+.form-panel{border:1px solid var(--hairline);border-radius:4px;background:#fff;padding:38px 36px}
 
 @media(max-width:520px){
   .modal{padding:32px 24px 28px;border-radius:4px}
@@ -870,15 +952,18 @@ svg.diagram.fig-armed.fig-draw .fig-badge{opacity:1;transform:none}
   .steps{grid-template-columns:1fr 1fr}
   .step{border-bottom:1px solid var(--hairline)}
   .step:nth-child(2){border-right:0}
-  .cards,.pillars,.cs-grid,.friction-row-top{grid-template-columns:1fr}
+  .cards,.pillars,.cs-grid,.friction-row-top,.stats-grid{grid-template-columns:1fr}
   .f-top{grid-template-columns:1fr 1fr}
   .f-brand{grid-column:1/-1}
   .subservices{grid-template-columns:1fr 1fr}
   .subservices .step{border-bottom:1px solid var(--hairline)}
   .subservices .step:nth-child(2n){border-right:0}
-  /* the 6-link horizontal nav + brand + CTA button don't fit a tablet-width
-     header once the split-grid breakpoint above kicks in, so the mobile
-     dropdown menu activates here too instead of only under 640px. */
+}
+/* the 7-link horizontal nav (Method/Services/Assessment/Case Studies/About/
+   Insights/Resources) + brand + CTA button need more room than the 960px
+   content-grid breakpoint above provides, so the mobile dropdown menu gets
+   its own wider breakpoint here instead of sharing that one. */
+@media(max-width:1080px){
   .nav-links{
     display:flex;position:absolute;top:74px;left:0;right:0;flex-direction:column;
     background:#fff;border-bottom:1px solid var(--hairline);padding:20px 22px;gap:6px;
@@ -895,6 +980,13 @@ svg.diagram.fig-armed.fig-draw .fig-badge{opacity:1;transform:none}
   .wrap{padding:0 22px}
   .sectors-row{flex-direction:column;align-items:flex-start;gap:12px}
   .marquee{width:100%}
+  .stats-grid{gap:34px;margin-top:34px}
+  .result-card{padding:34px 24px}
+  .form-panel{padding:28px 22px}
+  .result-metric-value{font-size:40px}
+  .result-person{flex-direction:column;gap:8px;text-align:center}
+  .result-person-info{text-align:center}
+  .stat-figure{font-size:38px;padding-bottom:14px;margin-bottom:12px}
   .hero{padding:48px 0 40px}
   .page-hero{padding:88px 0 56px}
   .section{padding:64px 0}
@@ -914,6 +1006,8 @@ svg.diagram.fig-armed.fig-draw .fig-badge{opacity:1;transform:none}
   .ondemand-row{gap:24px}
   .ondemand-row .btn{width:100%;justify-content:center}
   .tl-item{grid-template-columns:40px 1fr;gap:18px;padding:26px 0}
+  .research-item{grid-template-columns:40px 1fr;gap:16px;padding:20px 8px}
+  .dossier .d-row{grid-template-columns:32px 1fr;gap:14px}
   .tl-num{width:40px;height:40px;font-size:12px}
   .calc-result{padding:26px 24px}
   .scorecard{padding:26px 22px}

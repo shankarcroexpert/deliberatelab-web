@@ -134,7 +134,7 @@
 </section>
 
 <!-- FRICTION, VISUALISED -->
-<section class="section friction" id="friction">
+<section class="section friction warm" id="friction">
   <div class="wrap">
     <div class="reveal" style="max-width:720px">
       <span class="eyebrow">Field notes — friction, visualised</span>
@@ -241,6 +241,34 @@
   </div>
 </section>
 
+<!-- THE PROBLEM, IN NUMBERS -->
+<section class="section" id="problem-numbers">
+  <div class="wrap">
+    <div class="reveal" style="max-width:640px">
+      <span class="eyebrow">Why this matters</span>
+      <h2 style="max-width:24ch">Acquisition gets the budget. The sale gets guessed at.</h2>
+    </div>
+    <div class="stats-grid reveal" data-stagger>
+      <div class="stat-block">
+        <div class="stat-figure">{{~7 in 8}}</div>
+        <p class="stat-label">experiments that don't win. Most ideas fail, which is why what you test first decides your return.</p>
+        <!-- once verified, wrap the figure in <span class="countup" data-target="N"> for the on-scroll count-up (same mechanism as the homepage PROOF Score weights) -->
+        <p class="stat-source">Source: {{CRO win-rate benchmark — verify}}</p>
+      </div>
+      <div class="stat-block">
+        <div class="stat-figure">{{70%+}}</div>
+        <p class="stat-label">of a considered purchase happens before a buyer ever contacts you.</p>
+        <p class="stat-source">Source: {{buyer-research study — verify}}</p>
+      </div>
+      <div class="stat-block">
+        <div class="stat-figure stat-figure-text">Then it goes offline</div>
+        <p class="stat-label">and that's exactly where most brands stop measuring.</p>
+      </div>
+    </div>
+    <p class="mono-note stats-closing"><span class="tickline"></span> We don't sell you a scare statistic. On the first call we model the real number from your traffic and average order value, honestly.</p>
+  </div>
+</section>
+
 <!-- 02 THE LOOP -->
 <section class="section warm" id="loop">
   <div class="wrap">
@@ -343,31 +371,55 @@
     <div class="reveal">
       <div class="exhibit">05 — <b>The offer</b></div>
       <div class="offer-head">
-        <h2>Three ways to work with us.</h2>
+        <h2>Pick your variant.</h2>
+        <p class="lead">Two ways in: the Deliberate Audit, or the Deliberate Program. There's no wrong variant, only the one that fits where you are.</p>
       </div>
     </div>
-    <div class="cards reveal" data-stagger>
+    <div class="cards variant-cards reveal" data-stagger>
       <div class="card feature">
+        <span class="tag variant-tag">Variant A</span>
         <span class="badge">Start here</span>
-        <span class="tag">The one door in</span>
         <h3>The Deliberate Audit</h3>
         <div class="price">Fixed scope · fixed price</div>
-        <p>A deep, research-led teardown of your considered-purchase journey, ending in a prioritised, PROOF-scored roadmap you own, whether or not we work together again.</p>
-        <a href="#book" class="link">Learn more <span class="arw">→</span></a>
+        <p>One project. A full teardown and a PROOF-scored roadmap you own. Best when you want direction, fast.</p>
+        <a href="deliberate-audit.html" class="link">Learn more <span class="arw">→</span></a>
       </div>
       <div class="card">
-        <span class="tag">Ongoing  program</span>
+        <span class="tag variant-tag">Variant B</span>
         <h3>The Deliberate Program</h3>
         <div class="price">Foundation → Growth → Scale</div>
-        <p>Experimentation run as a managed program: research, testing, closed-loop measurement and reporting on a monthly cadence, scaled to your volume and ambition.</p>
+        <p>An ongoing experimentation program. Best when you're ready to compound wins, month over month.</p>
         <a href="#book" class="link">Learn more <span class="arw">→</span></a>
       </div>
-      <div class="card">
+    </div>
+    <div class="ondemand-row reveal" style="margin-top:44px;padding-top:38px;border-top:1px solid var(--hairline)">
+      <div>
         <span class="tag">Flexible</span>
         <h3>On-demand</h3>
         <div class="price">Senior hours, as needed</div>
-        <p>A bucket of senior CRO and experimentation hours for teams that need expert firepower on specific problems without committing to a full retainer.</p>
-        <a href="#book" class="link">Learn more <span class="arw">→</span></a>
+        <p class="lead">A bucket of senior CRO and experimentation hours for teams that need expert firepower on specific problems without committing to a full retainer.</p>
+      </div>
+      <a href="#book" class="btn btn-ghost js-book-cta">Ask about on-demand <span class="arw">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER PRESENCE -->
+<section class="section" id="founder-presence">
+  <div class="wrap">
+    <div class="split reveal">
+      <div class="founder-photo placeholder-box" style="aspect-ratio:4/5;min-height:340px">{{FOUNDER_PHOTO — headshot or environmental portrait, 4:5}}</div>
+      <div>
+        <span class="eyebrow">Who you work with</span>
+        <h2 style="max-width:20ch">A senior operator, not a junior handoff.</h2>
+        <p class="lead">Deliberate Lab is founder-led on purpose. You work directly with a CRO practitioner who ran experimentation inside the automotive world (where every sale is a high-value, researched purchase closed in a showroom or online), now brought to other considered-purchase brands. Backed, when a project needs it, by a bench of specialist researchers, developers and designers.</p>
+        <div class="chip-row">
+          <span class="chip">Ex-automotive CRO</span>
+          <span class="chip">CXL-trained: CRO &amp; Experimentation, A/B Testing, CRO Agency</span>
+          <span class="chip">Writes weekly on experimentation</span>
+        </div>
+        <p class="mono-note" style="margin-top:0;margin-bottom:20px"><span class="tickline"></span> {{FOUNDER_NAME}} — Founder, Deliberate Lab</p>
+        <a href="about.html" class="link">More about the approach <span class="arw">→</span></a>
       </div>
     </div>
   </div>
@@ -398,6 +450,43 @@
         <p>Wins and losses, online lift and lift at the sale, in a single scorecard. You’ll always know what’s true, and that’s the only way experimentation compounds.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="reveal" style="max-width:640px">
+      <span class="eyebrow">Questions</span>
+      <h2 style="max-width:18ch">A few honest answers before you book a call.</h2>
+    </div>
+    <div class="faq-list reveal" data-stagger style="max-width:820px">
+      <div class="faq-item">
+        <h3><button type="button" class="faq-q" id="home-faq-q-1" aria-expanded="false" aria-controls="home-faq-a-1">We sell offline. Can you even measure that?<span class="plus" aria-hidden="true"></span></button></h3>
+        <div class="faq-a" id="home-faq-a-1" role="region" aria-labelledby="home-faq-q-1">
+          <div class="faq-a-inner">That's the whole reason we exist. We connect online actions (configurations, enquiries, test-drive bookings) to what happens at the showroom, branch or counter, so every experiment is judged on real revenue, not clicks. If your systems can't link the two yet, closing that gap is usually the first thing we fix.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <h3><button type="button" class="faq-q" id="home-faq-q-2" aria-expanded="false" aria-controls="home-faq-a-2">How is this different from a normal CRO agency?<span class="plus" aria-hidden="true"></span></button></h3>
+        <div class="faq-a" id="home-faq-a-2" role="region" aria-labelledby="home-faq-q-2">
+          <div class="faq-a-inner">Most optimise the click and stop at the form. We measure to the sale, online or offline, and we report the losses, not just the wins. If a test does nothing, you'll hear it from us first.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <h3><button type="button" class="faq-q" id="home-faq-q-3" aria-expanded="false" aria-controls="home-faq-a-3">You're new. Why should we trust you?<span class="plus" aria-hidden="true"></span></button></h3>
+        <div class="faq-a" id="home-faq-a-3" role="region" aria-labelledby="home-faq-q-3">
+          <div class="faq-a-inner">Fair question. We're a founding-stage agency and won't pretend otherwise. You get a senior operator doing the actual work, a method built on the field's best practice, and total transparency: a scorecard showing every result. Judge us on how we think on the first call.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <h3><button type="button" class="faq-q" id="home-faq-q-4" aria-expanded="false" aria-controls="home-faq-a-4">What's the ROI of working with you?<span class="plus" aria-hidden="true"></span></button></h3>
+        <div class="faq-a" id="home-faq-a-4" role="region" aria-labelledby="home-faq-q-4">
+          <div class="faq-a-inner">We aim for a program to return several times its cost, but we won't stick a fake number on a business we haven't measured. On the first call we model it from your average order value and traffic, honestly, and tell you if it isn't worth it yet.</div>
+        </div>
+      </div>
+    </div>
+    <p class="mono-note" style="margin-top:26px"><span class="tickline"></span> More questions, answered in full on the <a href="services.html#faq" style="color:var(--gold);text-decoration:underline;text-underline-offset:3px">services page</a>.</p>
   </div>
 </section>
 

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="//cdn.evgnet.com/beacon/comsensetechnologies/shankar_test/scripts/evergage.min.js"></script>
+<script async src="https://t.contentsquare.net/uxa/37e36ca658643.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#17191e">
+<title>Contact — Deliberate Lab</title>
+<meta name="description" content="Not ready to book a call? Tell us what you need and we'll reply within one business day. No sequences, no spam.">
+<link rel="canonical" href="https://deliberatelab.com/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Deliberate Lab">
+<meta property="og:title" content="Contact">
+<meta property="og:description" content="Not ready to book a call? Tell us what you need and we'll reply within one business day. No sequences, no spam.">
+<meta property="og:url" content="https://deliberatelab.com/contact.html">
+<meta property="og:image" content="{{OG_IMAGE — 1200x630 social share image for this page}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact">
+<meta name="twitter:description" content="Not ready to book a call? Tell us what you need and we'll reply within one business day. No sequences, no spam.">
+<meta name="twitter:image" content="{{OG_IMAGE — 1200x630 social share image for this page}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy" style="max-width:700px">
+      <span class="eyebrow">Contact</span>
+      <h1>Tell us what you need.</h1>
+      <p class="lead">Ready to talk now? Booking a call is still the fastest way to get a straight answer. Not ready yet? Send us a message below instead, no pressure.</p>
+      <div class="cta-row">
+        <a href="#book" class="btn js-book-cta">Book a discovery call <span class="arw">→</span></a>
+        <a href="#message" class="btn btn-ghost">Send a message instead</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE LOWER-COMMITMENT PATH -->
+<section class="section" id="message">
+  <div class="wrap">
+    <div class="split reveal">
+      <div>
+        <span class="eyebrow">The lower-commitment path</span>
+        <h2 style="max-width:18ch">Prefer to write it down first?</h2>
+        <p class="lead">Tell us a bit about what you need. No booking required, and no sequence of automated follow-ups afterwards, just a real reply from a real person.</p>
+      </div>
+      <form class="form-panel" id="contactForm" novalidate>
+        <div class="field">
+          <label for="contactInterest">I'm interested in…</label>
+          <select id="contactInterest" name="interest" required>
+            <option value="" disabled selected>Choose one</option>
+            <option value="A Deliberate Audit">A Deliberate Audit</option>
+            <option value="The Deliberate Program">The Deliberate Program</option>
+            <option value="On-demand hours">On-demand hours</option>
+            <option value="Just exploring">Just exploring</option>
+          </select>
+          <span class="err" id="contactInterestErr">Please choose one option.</span>
+        </div>
+        <div class="field">
+          <label for="contactName">Name</label>
+          <input type="text" id="contactName" name="name" autocomplete="name" required placeholder="Your full name">
+          <span class="err" id="contactNameErr">Please enter your name.</span>
+        </div>
+        <div class="field">
+          <label for="contactEmail">Email</label>
+          <input type="email" id="contactEmail" name="email" autocomplete="email" required placeholder="you@company.com">
+          <span class="err" id="contactEmailErr">Please enter a valid email address.</span>
+        </div>
+        <div class="field">
+          <label for="contactCompany">Company</label>
+          <input type="text" id="contactCompany" name="company" autocomplete="organization" placeholder="Your company (optional)">
+        </div>
+        <div class="field">
+          <label for="contactMessage">Message</label>
+          <textarea id="contactMessage" name="message" rows="4" placeholder="What are you hoping to solve?"></textarea>
+        </div>
+        <div class="hp-field" aria-hidden="true">
+          <label for="contactWebsite">Website</label>
+          <input type="text" id="contactWebsite" name="website" tabindex="-1" autocomplete="off">
+        </div>
+        <button type="submit" class="btn" id="contactSubmitBtn">
+          <span class="btn-txt">Send message</span> <span class="arw">→</span>
+        </button>
+        <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
+        <p class="mono-note" style="margin-top:16px"><span class="tickline"></span> We reply within one business day. No sequences, no spam.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band" id="book">
+  <div class="wrap reveal">
+    <span class="eyebrow" style="justify-content:center;margin-bottom:22px">Start the conversation</span>
+    <h2>Or skip straight to a call.</h2>
+    <p class="lead">If you already know you want to talk, booking a discovery call is still the quickest path to a straight answer.</p>
+    <a href="mailto:hello@deliberatelab.com" class="btn js-book-cta">Book a discovery call <span class="arw">→</span></a>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER + BOOK A CALL MODAL (injected by js/partials.js) -->
+<div id="site-footer"></div>
+
+<script src="js/partials.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/motion.js" defer></script>
+<script src="js/transitions.js" defer></script>
+<script src="js/contact.js" defer></script>
+</body>
+</html>

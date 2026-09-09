@@ -8,6 +8,11 @@ var GOOGLE_SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbxyqdBEAaQK
    submissions still reach hello@deliberatelab.com. Same pattern as above. */
 var NEWSLETTER_ENDPOINT = "";
 
+/* Contact form endpoint (contact.html) — the lower-commitment path, separate
+   from the booking modal above so these leads can land in their own sheet/tab
+   if you want that. Leave blank until wired; falls back to a mailto. */
+var CONTACT_FORM_ENDPOINT = "";
+
 (function(){
   // sticky-nav hairline on scroll
   var hdr=document.getElementById('hdr');
@@ -234,28 +239,45 @@ var NEWSLETTER_ENDPOINT = "";
 
 /* FAQ accordion — real <button> + aria-expanded (native keyboard support).
    Panels have no default max-height in CSS, so without this script every
-   answer is simply visible; JS only collapses what it can also expand. */
+   answer is simply visible; JS only collapses what it can also expand.
+   Each .faq-list operates as its own group: opening one item in a group
+   closes the others in that same group (data-exclusive="false" on the
+   list opts a group out of this and allows several open at once). */
 (function(){
-  var items=document.querySelectorAll('.faq-item');
-  if(!items.length) return;
+  var lists=document.querySelectorAll('.faq-list');
+  if(!lists.length) return;
 
   function setOpen(btn,panel,open){
     btn.setAttribute('aria-expanded',open?'true':'false');
     panel.style.maxHeight=open?panel.scrollHeight+'px':'0px';
   }
 
-  items.forEach(function(item){
-    var btn=item.querySelector('.faq-q');
-    var panel=item.querySelector('.faq-a');
-    if(!btn||!panel) return;
-    setOpen(btn,panel,btn.getAttribute('aria-expanded')==='true');
-    btn.addEventListener('click',function(){
-      setOpen(btn,panel,btn.getAttribute('aria-expanded')!=='true');
+  lists.forEach(function(list){
+    var exclusive=list.getAttribute('data-exclusive')!=='false';
+    var items=list.querySelectorAll('.faq-item');
+
+    items.forEach(function(item){
+      var btn=item.querySelector('.faq-q');
+      var panel=item.querySelector('.faq-a');
+      if(!btn||!panel) return;
+      setOpen(btn,panel,btn.getAttribute('aria-expanded')==='true');
+      btn.addEventListener('click',function(){
+        var opening=btn.getAttribute('aria-expanded')!=='true';
+        if(exclusive && opening){
+          items.forEach(function(other){
+            if(other===item) return;
+            var otherBtn=other.querySelector('.faq-q');
+            var otherPanel=other.querySelector('.faq-a');
+            if(otherBtn&&otherPanel) setOpen(otherBtn,otherPanel,false);
+          });
+        }
+        setOpen(btn,panel,opening);
+      });
     });
   });
 
   window.addEventListener('resize',function(){
-    items.forEach(function(item){
+    document.querySelectorAll('.faq-item').forEach(function(item){
       var btn=item.querySelector('.faq-q');
       var panel=item.querySelector('.faq-a');
       if(btn&&panel&&btn.getAttribute('aria-expanded')==='true'){
