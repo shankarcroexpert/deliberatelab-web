@@ -71,15 +71,26 @@ Press `Ctrl + C` in the terminal to stop the server.
 
 ## Brand tokens (for reference)
 
-| Token        | Hex       | Use                          |
-|--------------|-----------|------------------------------|
-| Ink          | `#17191E` | Text, dark sections, buttons |
-| Gold         | `#9C7A2C` | Accent text, eyebrows        |
-| Gold line    | `#C9A24B` | Hairlines, ticks, highlights |
-| Warm paper   | `#F7F4EE` | Alternating section backgrounds |
-| Hairline     | `#E7E2D8` | Dividers, borders            |
+Design system: "Deep Space Experimentation Lab" — dark, scientific, technical.
+Full token list lives at the top of `css/styles.css`; summary below.
 
-Fonts: **Fraunces** (headings), **Hanken Grotesk** (body), **IBM Plex Mono** (labels/data).
+| Token       | Hex       | Use                                   |
+|-------------|-----------|----------------------------------------|
+| Space       | `#05070B` | Page background                        |
+| Space 2     | `#08111C` | Alternating section / footer background |
+| Panel       | `#0D1724` | Elevated surfaces — cards, readouts     |
+| Panel 2     | `#111E2D` | Further-elevated surfaces — modals, feature cards |
+| Text        | `#F4F7FA` | Primary text                           |
+| Muted       | `#8B9AAA` | Secondary text                         |
+| Muted 2     | `#7690A1` | Tertiary text — captions, source lines |
+| Cyan        | `#71E6FF` | Primary accent — labels, links         |
+| Blue        | `#5B8CFF` | Secondary accent — fills, underlines, badges |
+| Violet      | `#9B8CFF` | Tertiary accent, used sparingly        |
+| Success     | `#7DFFB2` | Positive outcomes — wins, high scores  |
+| Danger      | `#FF7A6E` | Errors, abandonment states             |
+| Hairline    | `#203143` | Dividers, borders                      |
+
+Fonts: **Space Grotesk** (headings), **Hanken Grotesk** (body), **IBM Plex Mono** (labels/data).
 
 ## Deploying
 

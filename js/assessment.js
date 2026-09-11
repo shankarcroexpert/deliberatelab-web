@@ -1,4 +1,4 @@
-/* Deliberate Lab — Revenue Leak assessment (tools.html only).
+/* Deliberate Lab — the CRO Diagnostic (tools.html only).
    All state lives in memory for the life of the page load — nothing is
    written to localStorage/sessionStorage, so this works even in sandboxes
    that block storage APIs. A full page reload always starts fresh. */
@@ -9,62 +9,75 @@
   var reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   var QUESTION_TRANSITION_MS = 200; // must match the .aq-question transition duration in css/styles.css
 
+  /* Ten questions, two per maturity dimension. Category totals feed the
+     three named breakdown bars on the result screen (Research /
+     Experimentation / Measurement) and the priority recommendation, which
+     is picked from whichever of the five dimensions actually scored
+     lowest — including Analytics and Prioritization, even though those
+     two don't get their own bar on screen. */
   var QUESTIONS = [
     {
-      q: 'Do you track online actions — enquiries, test-drives, site visits — through to the sale, online or off?',
+      category: 'research',
+      q: 'Do you run structured research (interviews, session recordings, surveys) before deciding what to test?',
       options: [
-        { label: 'No — once someone enquires or visits, we lose visibility.', points: 0 },
-        { label: 'We estimate it manually, now and then.', points: 1 },
-        { label: 'Some actions are tracked, but not consistently.', points: 2 },
-        { label: 'Yes — every key action is wired back to what was actually sold.', points: 3 }
+        { label: 'We don’t — changes ship on opinion.', points: 0 },
+        { label: 'Occasionally, when something feels broken.', points: 1 },
+        { label: 'Regularly, but informally.', points: 2 },
+        { label: 'Yes — every major hypothesis traces back to a specific finding.', points: 3 }
       ]
     },
     {
-      q: 'Do you run structured, statistically sound A/B tests on your key journeys?',
+      category: 'research',
+      q: 'Do you know why shoppers abandon at each stage of your funnel, not just where?',
       options: [
-        { label: 'We don’t test — changes ship on opinion.', points: 0 },
-        { label: 'We test occasionally, without much statistical rigor.', points: 1 },
-        { label: 'We test regularly, with reasonable rigor.', points: 2 },
+        { label: 'No idea — we only see the drop-off numbers.', points: 0 },
+        { label: 'We have theories, not evidence.', points: 1 },
+        { label: 'Some qualitative insight, but patchy.', points: 2 },
+        { label: 'Yes — backed by recordings, surveys or interviews.', points: 3 }
+      ]
+    },
+    {
+      category: 'analytics',
+      q: 'Is your analytics tracking (GA4, Shopify analytics, etc.) set up cleanly, with events you actually trust?',
+      options: [
+        { label: 'Honestly, we don’t fully trust our own numbers.', points: 0 },
+        { label: 'Mostly set up, with known gaps.', points: 1 },
+        { label: 'Solid, reviewed occasionally.', points: 2 },
+        { label: 'Clean, audited, and trusted for every key decision.', points: 3 }
+      ]
+    },
+    {
+      category: 'analytics',
+      q: 'Can you see performance broken down by device, segment or traffic source, not just store-wide?',
+      options: [
+        { label: 'Store-wide numbers only.', points: 0 },
+        { label: 'Sometimes, with manual digging.', points: 1 },
+        { label: 'Yes, for the metrics that matter most.', points: 2 },
+        { label: 'Yes — segmented reporting is part of how we work.', points: 3 }
+      ]
+    },
+    {
+      category: 'experimentation',
+      q: 'Do you run structured, statistically sound A/B tests on your key pages?',
+      options: [
+        { label: 'We don’t test — we just ship changes.', points: 0 },
+        { label: 'Occasionally, without much rigor.', points: 1 },
+        { label: 'Regularly, with reasonable rigor.', points: 2 },
         { label: 'Yes — proper sample-size and duration planning, every time.', points: 3 }
       ]
     },
     {
-      q: 'Do you know your cost per conversion — e.g. cost per test drive, per disbursed loan, per enrolment?',
+      category: 'experimentation',
+      q: 'When a test “wins”, do you know it’s a real result and not noise?',
       options: [
-        { label: 'No idea.', points: 0 },
-        { label: 'A rough estimate at best.', points: 1 },
-        { label: 'Calculated per campaign, but not continuously.', points: 2 },
-        { label: 'Yes — tracked continuously and segmented.', points: 3 }
+        { label: 'We eyeball it and move on.', points: 0 },
+        { label: 'Rarely checked properly.', points: 1 },
+        { label: 'Usually, for the bigger tests.', points: 2 },
+        { label: 'Always — every result is read for statistical validity.', points: 3 }
       ]
     },
     {
-      q: 'Is your enquiry-to-sale (or configurator-to-delivery) journey mapped end to end?',
-      options: [
-        { label: 'No — it’s a black box after the form.', points: 0 },
-        { label: 'Partially mapped, with big gaps.', points: 1 },
-        { label: 'Mapped, but not consistently measured.', points: 2 },
-        { label: 'Fully mapped and measured, start to finish.', points: 3 }
-      ]
-    },
-    {
-      q: 'When a test “wins” online — more clicks, more leads — do you verify it actually drove more sales?',
-      options: [
-        { label: 'We assume more clicks means more revenue.', points: 0 },
-        { label: 'Rarely — we usually take the online number at face value.', points: 1 },
-        { label: 'Sometimes, for the bigger launches.', points: 2 },
-        { label: 'Always — every result is checked against the actual outcome.', points: 3 }
-      ]
-    },
-    {
-      q: 'Do you report the tests and campaigns that didn’t work, or mostly just the wins?',
-      options: [
-        { label: 'Only the wins make it into the deck.', points: 0 },
-        { label: 'Losses get quietly dropped.', points: 1 },
-        { label: 'Losses are reported, but rarely analysed deeply.', points: 2 },
-        { label: 'Every result — win, loss or flat — is documented and shared.', points: 3 }
-      ]
-    },
-    {
+      category: 'prioritization',
       q: 'How do you decide what to test or build next?',
       options: [
         { label: 'Whoever’s loudest in the room, or the latest trend.', points: 0 },
@@ -74,33 +87,70 @@
       ]
     },
     {
-      q: 'Is there a single source of truth connecting your web analytics to your CRM or DMS?',
+      category: 'prioritization',
+      q: 'Is your roadmap agreed and visible before work starts, or does it shift week to week?',
       options: [
-        { label: 'No integration — everything is matched by hand, if at all.', points: 0 },
-        { label: 'Partial exports and manual matching.', points: 1 },
-        { label: 'Semi-automated integration.', points: 2 },
-        { label: 'Fully automated, close to real time.', points: 3 }
+        { label: 'It shifts constantly.', points: 0 },
+        { label: 'Loosely agreed, often reshuffled.', points: 1 },
+        { label: 'Mostly stable, some flexibility.', points: 2 },
+        { label: 'Locked and prioritized before a single test is built.', points: 3 }
+      ]
+    },
+    {
+      category: 'measurement',
+      q: 'Do you report the tests that didn’t work, or mostly just the wins?',
+      options: [
+        { label: 'Only the wins make it into the deck.', points: 0 },
+        { label: 'Losses get quietly dropped.', points: 1 },
+        { label: 'Losses are reported, but rarely analysed deeply.', points: 2 },
+        { label: 'Every result — win, loss or flat — is documented and shared.', points: 3 }
+      ]
+    },
+    {
+      category: 'measurement',
+      q: 'Is there a learning library — somewhere every past result is captured, so you don’t re-test the same idea by accident?',
+      options: [
+        { label: 'No — results live in people’s memory, if anywhere.', points: 0 },
+        { label: 'Scattered across docs and slides.', points: 1 },
+        { label: 'Loosely organized somewhere.', points: 2 },
+        { label: 'Yes — a single source of truth for every result.', points: 3 }
       ]
     }
   ];
 
   var BANDS = [
     {
-      max: 39, tier: 'tier-low', name: 'Analytics-only',
-      headline: 'You’re collecting data — but the loop to the sale isn’t closed yet.',
-      body: 'Right now, most of what happens after the click is invisible: enquiries, test-drives and site visits aren’t reliably tied back to what actually gets sold. Every online “win” is really just a guess about revenue — which is exactly the blind spot Deliberate Lab exists to close.'
+      max: 39, tier: 'tier-low', name: 'Ad-hoc',
+      headline: 'Testing happens, if at all — but there’s no system behind it yet.',
+      body: 'Right now, most decisions are shipped on opinion and judged on whatever metric moved that week. There’s no shortage of ideas, just no system connecting them to evidence, which is exactly the gap Deliberate Lab exists to close.'
     },
     {
-      max: 74, tier: 'tier-mid', name: 'Testing, loop open',
-      headline: 'You’re testing — but you can’t yet prove it moves real sales.',
-      body: 'You’ve got real structure in place — research, maybe even A/B tests. But the connection between an online result and the sale is patchy, so a “winning” test could quietly be losing you revenue. Closing that loop is usually the single highest-leverage fix available to you right now.'
+      max: 74, tier: 'tier-mid', name: 'Emerging',
+      headline: 'You’ve got real pieces in place — they’re just not running as one system yet.',
+      body: 'Research, testing or tracking exist in some form, but they’re not yet wired together into a single loop. That gap is usually the single highest-leverage fix available to you right now.'
     },
     {
-      max: 100, tier: 'tier-high', name: 'Loop-closing',
-      headline: 'You’re closing the loop — the opportunity now is scale and rigor.',
-      body: 'You’re already doing more than most considered-purchase brands: measuring online actions against real outcomes, with genuine testing discipline. The next gains come from PROOF-scored prioritisation, tighter attribution and running more of the roadmap at once.'
+      max: 100, tier: 'tier-high', name: 'Systematic',
+      headline: 'You’re running CRO as an operating system, not a collection of tweaks.',
+      body: 'You’re already doing more than most Shopify brands: research feeding hypotheses, disciplined testing, honest measurement. The next gains come from tighter prioritization and running more of the roadmap at once.'
     }
   ];
+
+  var CATEGORY_LABELS = {
+    research: 'Research',
+    analytics: 'Analytics',
+    experimentation: 'Experimentation',
+    prioritization: 'Prioritization',
+    measurement: 'Measurement'
+  };
+
+  var PRIORITY_COPY = {
+    research: 'Your biggest opportunity right now: Research. Testing without research is just guessing with extra steps — start every hypothesis from a real user insight.',
+    analytics: 'Your biggest opportunity right now: Analytics. If you can’t trust the numbers, you can’t trust the test results built on top of them.',
+    experimentation: 'Your biggest opportunity right now: Experimentation. Structured, properly-powered A/B tests are how evidence becomes proof.',
+    prioritization: 'Your biggest opportunity right now: Prioritization. Score every idea the same way, and the highest-impact bets rise to the top on their own.',
+    measurement: 'Your biggest opportunity right now: Measurement. A win you can’t explain is a win you can’t repeat.'
+  };
 
   var current = 0;
   var answers = new Array(QUESTIONS.length).fill(null); // stores the chosen option INDEX per question, not points
@@ -205,13 +255,38 @@
     window.setTimeout(paintQuestion, QUESTION_TRANSITION_MS);
   }
 
-  function computeScore(){
-    var total = answers.reduce(function(sum, optIndex, i){
-      if(optIndex === null) return sum;
-      return sum + QUESTIONS[i].options[optIndex].points;
-    }, 0);
-    var max = QUESTIONS.length * 3;
-    return Math.round((total / max) * 100);
+  /* Returns { overall: 0-100, byCategory: { research: 0-100, ... } } */
+  function computeScores(){
+    var totals = {}, maxes = {};
+    Object.keys(CATEGORY_LABELS).forEach(function(cat){ totals[cat] = 0; maxes[cat] = 0; });
+
+    var grandTotal = 0, grandMax = QUESTIONS.length * 3;
+
+    QUESTIONS.forEach(function(question, i){
+      maxes[question.category] += 3;
+      if(answers[i] === null) return;
+      var pts = question.options[answers[i]].points;
+      totals[question.category] += pts;
+      grandTotal += pts;
+    });
+
+    var byCategory = {};
+    Object.keys(CATEGORY_LABELS).forEach(function(cat){
+      byCategory[cat] = maxes[cat] > 0 ? Math.round((totals[cat] / maxes[cat]) * 100) : 0;
+    });
+
+    return {
+      overall: Math.round((grandTotal / grandMax) * 100),
+      byCategory: byCategory
+    };
+  }
+
+  function lowestCategory(byCategory){
+    var lowestCat = null, lowestVal = Infinity;
+    Object.keys(byCategory).forEach(function(cat){
+      if(byCategory[cat] < lowestVal){ lowestVal = byCategory[cat]; lowestCat = cat; }
+    });
+    return lowestCat;
   }
 
   function getBand(score){
@@ -254,24 +329,48 @@
     });
   }
 
+  function fillBar(barId, pctId, pct){
+    var bar = document.getElementById(barId);
+    var pctEl = document.getElementById(pctId);
+    if(pctEl) pctEl.textContent = pct + '%';
+    if(!bar) return;
+    if(reduceMotion){
+      bar.style.width = pct + '%';
+      return;
+    }
+    bar.style.width = '0%';
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        bar.style.width = pct + '%';
+      });
+    });
+  }
+
   function showResult(){
-    var score = computeScore();
-    var band = getBand(score);
+    var scores = computeScores();
+    var band = getBand(scores.overall);
+    var priorityCat = lowestCategory(scores.byCategory);
 
     var scoreNum = document.getElementById('aqScoreNum');
     var verdict = document.getElementById('aqVerdict');
     var headline = document.getElementById('aqHeadline');
     var body = document.getElementById('aqBody');
+    var priorityText = document.getElementById('aqPriorityText');
 
     scoreNum.textContent = '0';
     verdict.textContent = band.name;
     verdict.className = 'calc-verdict ' + band.tier;
     headline.textContent = band.headline;
     body.textContent = band.body;
+    if(priorityText) priorityText.textContent = PRIORITY_COPY[priorityCat] || '';
+
+    fillBar('aqBarResearch', 'aqPctResearch', scores.byCategory.research);
+    fillBar('aqBarExperimentation', 'aqPctExperimentation', scores.byCategory.experimentation);
+    fillBar('aqBarMeasurement', 'aqPctMeasurement', scores.byCategory.measurement);
 
     showPanel(resultPanel);
-    drawGauge(score);
-    animateCount(scoreNum, score, 700);
+    drawGauge(scores.overall);
+    animateCount(scoreNum, scores.overall, 700);
 
     headline.setAttribute('tabindex', '-1');
     headline.focus({ preventScroll: true });

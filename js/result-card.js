@@ -36,6 +36,7 @@ var RESULT = {
   if(roleEl) roleEl.textContent = RESULT.role;
   if(logoEl && RESULT.logoSrc){
     logoEl.src = RESULT.logoSrc;
+    logoEl.alt = RESULT.name ? RESULT.name + ' logo' : '';
     logoEl.hidden = false;
   }
 

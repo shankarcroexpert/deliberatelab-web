@@ -87,6 +87,39 @@
     });
   }
 
+  /* ---------- 2b. generic multi-node "flow" diagram reveal ----------
+     Companion to initDiagrams() above, for the newer node/line diagrams
+     (hero signature visual, method/services loop diagrams) that use
+     .flow-node / .flow-arc-line instead of the older .fig-node/.fig-arc
+     pair. Sets --i on each so the CSS stagger-delay formula in
+     styles.css (svg.diagram.node-armed …) fires in sequence, then reveals
+     once the diagram scrolls into view. Purely additive — a diagram with
+     no .flow-node children is untouched. */
+  function initFlowDiagrams(){
+    document.querySelectorAll('.diagram').forEach(function(svg){
+      var nodes = svg.querySelectorAll('.flow-node');
+      if(!nodes.length) return;
+
+      var i = 0;
+      svg.querySelectorAll('.flow-node, .flow-arc-line').forEach(function(el){
+        el.style.setProperty('--i', i++);
+      });
+
+      if(reduceMotion){ svg.classList.add('node-armed','node-draw'); return; }
+
+      svg.classList.add('node-armed');
+      function reveal(){ svg.classList.add('node-draw'); }
+
+      if(!hasIO){ reveal(); return; }
+      var io = new IntersectionObserver(function(entries, obs){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){ reveal(); obs.unobserve(entry.target); }
+        });
+      }, {threshold:.3});
+      io.observe(svg);
+    });
+  }
+
   /* ---------- 3. staggered scroll reveals ---------- */
   function initStaggerReveals(){
     document.querySelectorAll('.reveal[data-stagger]').forEach(function(container){
@@ -254,6 +287,7 @@
 
   initHeroEntrance();
   initDiagrams();
+  initFlowDiagrams();
   initStaggerReveals();
   initCountups();
   initProofBars();

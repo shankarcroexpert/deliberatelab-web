@@ -306,7 +306,8 @@ var TOOL_ADVISOR_ENDPOINT = "";
   function applyFilter(filter){
     var visible=0;
     cards.forEach(function(card){
-      var match=filter==='all'||card.getAttribute('data-sector')===filter;
+      var tags=(card.getAttribute('data-tags')||'').split(/\s+/);
+      var match=filter==='all'||tags.indexOf(filter)!==-1;
       card.hidden=!match;
       if(match) visible++;
     });

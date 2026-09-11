@@ -13,23 +13,23 @@
       '<div class="wrap nav">' +
         '<a class="brand" href="index.html">' +
           '<svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
-            '<path d="M9 2v7.2L3.4 19.1A2 2 0 0 0 5.1 22h13.8a2 2 0 0 0 1.7-2.9L15 9.2V2" stroke="#17191e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>' +
-            '<path d="M8 2h8" stroke="#17191e" stroke-width="1.6" stroke-linecap="round"/>' +
-            '<circle cx="12" cy="16.5" r="1.7" fill="#c9a24b"/>' +
+            '<path d="M9 2v7.2L3.4 19.1A2 2 0 0 0 5.1 22h13.8a2 2 0 0 0 1.7-2.9L15 9.2V2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>' +
+            '<path d="M8 2h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>' +
+            '<circle cx="12" cy="16.5" r="1.7" fill="#71E6FF"/>' +
           '</svg>' +
           'Deliberate&nbsp;Lab' +
         '</a>' +
         '<nav class="nav-links" id="navlinks">' +
-          '<a href="method.html" data-page="method.html">Method</a>' +
+          '<a href="case-studies.html" data-page="case-studies.html">Work</a>' +
           '<a href="services.html" data-page="services.html">Services</a>' +
-          '<a href="tools.html" data-page="tools.html">Assessment</a>' +
-          '<a href="case-studies.html" data-page="case-studies.html">Case Studies</a>' +
-          '<a href="about.html" data-page="about.html">About</a>' +
-          '<a href="insights.html" data-page="insights.html">Insights</a>' +
+          '<a href="method.html" data-page="method.html">Method</a>' +
           '<a href="resources.html" data-page="resources.html">Resources</a>' +
+          '<a href="insights.html" data-page="insights.html">Insights</a>' +
+          '<a href="about.html" data-page="about.html">About</a>' +
+          '<a href="deliberate-audit.html" class="btn nav-cta-mobile">Get CRO Audit <span class="arw">→</span></a>' +
         '</nav>' +
         '<div class="nav-cta">' +
-          '<a href="#book" class="btn js-book-cta">Book a call <span class="arw">→</span></a>' +
+          '<a href="deliberate-audit.html" class="btn">Get CRO Audit <span class="arw">→</span></a>' +
           '<button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>' +
         '</div>' +
       '</div>' +
@@ -42,13 +42,13 @@
           '<div class="f-brand">' +
             '<a class="brand" href="index.html">' +
               '<svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
-                '<path d="M9 2v7.2L3.4 19.1A2 2 0 0 0 5.1 22h13.8a2 2 0 0 0 1.7-2.9L15 9.2V2" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>' +
-                '<path d="M8 2h8" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round"/>' +
-                '<circle cx="12" cy="16.5" r="1.7" fill="#c9a24b"/>' +
+                '<path d="M9 2v7.2L3.4 19.1A2 2 0 0 0 5.1 22h13.8a2 2 0 0 0 1.7-2.9L15 9.2V2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>' +
+                '<path d="M8 2h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>' +
+                '<circle cx="12" cy="16.5" r="1.7" fill="#71E6FF"/>' +
               '</svg>' +
               'Deliberate&nbsp;Lab' +
             '</a>' +
-            '<p>Experimentation for considered purchases.<br>Online → the sale, measured.</p>' +
+            '<p>Shopify CRO &amp; experimentation.<br>Research before recommendations.</p>' +
             '<div class="f-locale">' +
               '<svg class="flag-in" viewBox="0 0 30 20" width="22" height="15" role="img" aria-label="Flag of India">' +
                 '<rect x="0" y="0" width="30" height="20" fill="#ffffff"/>' +
@@ -68,18 +68,21 @@
           '</div>' +
           '<div class="f-col">' +
             '<h4>Company</h4>' +
+            '<a href="case-studies.html">Work</a>' +
+            '<a href="method.html">Method</a>' +
+            '<a href="about.html">About</a>' +
+            '<a href="resources.html">Resources</a>' +
+            '<a href="insights.html">Insights</a>' +
             '<a href="tools.html">Free Assessment</a>' +
             '<a href="tool-advisor.html">Testing Tool Advisor</a>' +
-            '<a href="resources.html">Resources</a>' +
-            '<a href="about.html">About</a>' +
-            '<a href="method.html">Method</a>' +
-            '<a href="case-studies.html">Case Studies</a>' +
-            '<a href="insights.html">Insights</a>' +
           '</div>' +
           '<div class="f-col">' +
             '<h4>Services</h4>' +
-            '<a href="deliberate-audit.html">The Deliberate Audit</a>' +
-            '<a href="services.html#program">The Deliberate Program</a>' +
+            '<a href="deliberate-audit.html">CRO Audit</a>' +
+            '<a href="services.html">CRO Strategy</a>' +
+            '<a href="services.html">Experimentation</a>' +
+            '<a href="services.html">Shopify Optimization</a>' +
+            '<a href="services.html#program">Ongoing Experimentation</a>' +
             '<a href="services.html#on-demand">On-demand</a>' +
           '</div>' +
           '<div class="f-col">' +
@@ -101,9 +104,9 @@
         '<button type="button" class="modal-close" id="bookModalClose" aria-label="Close">&times;</button>' +
         '<div class="modal-brand">' +
           '<svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
-            '<path d="M9 2v7.2L3.4 19.1A2 2 0 0 0 5.1 22h13.8a2 2 0 0 0 1.7-2.9L15 9.2V2" stroke="#17191e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>' +
-            '<path d="M8 2h8" stroke="#17191e" stroke-width="1.6" stroke-linecap="round"/>' +
-            '<circle cx="12" cy="16.5" r="1.7" fill="#c9a24b"/>' +
+            '<path d="M9 2v7.2L3.4 19.1A2 2 0 0 0 5.1 22h13.8a2 2 0 0 0 1.7-2.9L15 9.2V2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>' +
+            '<path d="M8 2h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>' +
+            '<circle cx="12" cy="16.5" r="1.7" fill="#71E6FF"/>' +
           '</svg>' +
           '<span>Deliberate&nbsp;Lab</span>' +
         '</div>' +
