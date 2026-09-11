@@ -444,6 +444,20 @@ header.scrolled{border-bottom:1px solid var(--hairline)}
 .faq-a{overflow:hidden;transition:max-height .32s var(--ease-out)}
 .faq-a-inner{padding:0 0 22px;font-size:14.5px;color:var(--ink-70);max-width:66ch}
 
+/* ---------- reusable: related-content links (service-page pattern) ---------- */
+.related-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:28px}
+.related-card{
+  display:flex;flex-direction:column;gap:8px;padding:20px 22px;
+  border:1px solid var(--hairline);border-radius:3px;background:#fff;
+  transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.related-card:hover{border-color:var(--gold-line);transform:translateY(-2px);box-shadow:0 14px 32px rgba(23,25,30,.08)}
+.related-card .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.related-card h4{font-family:var(--serif);font-size:17px;font-weight:600;line-height:1.35}
+.related-card .link{margin-top:auto;font-weight:600;font-size:13.5px;display:inline-flex;align-items:center;gap:6px;color:var(--ink)}
+.related-card .link .arw{color:var(--gold);transition:transform .18s ease}
+.related-card:hover .link .arw{transform:translateX(3px)}
+
 /* ---------- reusable: diamond-bullet checklist ---------- */
 .check-list{list-style:none;margin-top:16px;display:flex;flex-direction:column;gap:9px}
 .check-list li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--ink-70)}
@@ -524,6 +538,45 @@ header.scrolled{border-bottom:1px solid var(--hairline)}
 .aq-cta-row{display:flex;flex-direction:column;align-items:center;gap:16px}
 .aq-retake{background:none;border:0;color:#a7a399;font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:4px}
 .aq-retake:hover{color:#fff}
+
+/* checkbox variant of .aq-radio-dot, used by multi-select questions (tool-advisor.html) */
+.aq-check-dot{border-radius:4px}
+.aq-check-dot::after{border-radius:1.5px;inset:4px}
+
+/* ---------- tool-advisor.html: Testing Tool Advisor result cards ---------- */
+.ta-result-heading{font-size:clamp(21px,2.6vw,27px);margin:0 auto 8px;max-width:32ch;color:#fff}
+.ta-result-sub{color:#a7a399;max-width:46ch;margin:0 auto 30px;font-size:14.5px}
+.ta-tool-list{display:flex;flex-direction:column;gap:14px;text-align:left;margin-bottom:32px}
+.ta-tool-card{
+  display:flex;gap:16px;align-items:flex-start;padding:20px 22px;
+  border:1px solid rgba(255,255,255,.14);border-radius:4px;background:rgba(255,255,255,.03);
+  opacity:0;transform:translateY(10px);animation:ta-rise .5s var(--ease-out) forwards;
+}
+.ta-tool-card:nth-child(1){animation-delay:.05s}
+.ta-tool-card:nth-child(2){animation-delay:.15s}
+.ta-tool-card:nth-child(3){animation-delay:.25s}
+@keyframes ta-rise{to{opacity:1;transform:none}}
+.ta-tool-rank{
+  flex:none;width:30px;height:30px;border-radius:50%;border:1px solid var(--gold-line);
+  display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;color:var(--gold-line);
+}
+.ta-tool-body{min-width:0}
+.ta-tool-name{font-family:var(--sans);font-size:16.5px;font-weight:600;color:#fff;margin-bottom:6px}
+.ta-tool-why{font-family:var(--sans);font-size:14px;color:#d9d6ce;line-height:1.55}
+.ta-tool-tags{margin-top:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:#a7a399}
+.ta-tool-tag{display:inline-block;background:rgba(201,162,75,.14);color:var(--gold-line);border-radius:2px;padding:2px 7px;margin:3px 5px 0 0}
+.ta-email{margin-top:6px}
+.ta-email-form{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:6px}
+.ta-email-row{display:flex;gap:10px;width:100%;max-width:380px}
+.ta-email-row input{
+  flex:1;min-width:0;padding:12px 14px;border-radius:4px;border:1px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.05);color:#fff;font-family:var(--sans);font-size:14.5px;
+}
+.ta-email-row input::placeholder{color:#8b8880}
+.ta-email-row input.invalid{border-color:#d97a5f}
+.ta-email-status{font-family:var(--mono);font-size:12px;color:#a7a399;min-height:16px}
+.ta-email-status.success{color:var(--gold-line)}
+.ta-email-status.error{color:#d97a5f}
 
 /* ---------- method page: vertical process timeline ---------- */
 .timeline{margin-top:52px;border-top:1px solid var(--ink)}
@@ -1020,6 +1073,8 @@ svg.diagram.fig-armed.fig-draw .fig-badge{opacity:1;transform:none}
   .aq-score-num{font-size:44px}
   .aq-nav{gap:10px}
   .aq-nav .btn{padding:13px 16px;font-size:14px}
+  .ta-tool-card{padding:16px 16px;gap:12px}
+  .ta-email-row{flex-direction:column}
   .cred-row{gap:18px}
   .cred-badge{width:66px;height:66px;font-size:8px}
   .compare-head{display:none}
@@ -1067,7 +1122,7 @@ svg.diagram.fig-armed.fig-draw .fig-badge{opacity:1;transform:none}
   .readout.bars-armed .bars i.on{transition:none;transform:none}
   .scroll-progress{transition:none}
   .btn{transition:background .18s ease, color .18s ease}
-  .card:hover,.step:hover{transform:none}
+  .card:hover,.step:hover,.related-card:hover{transform:none}
   .nav-links{transition:none}
   .menu-btn span{transition:none}
   .faq-a{transition:none}
@@ -1081,6 +1136,7 @@ svg.diagram.fig-armed.fig-draw .fig-badge{opacity:1;transform:none}
   .aq-question,.aq-question.aq-anim{transition:none;opacity:1;transform:none}
   .aq-progress-fill{transition:none}
   .aq-gauge-fill{transition:none}
+  .ta-tool-card{animation:none;opacity:1;transform:none}
   .btn .arw,.card .link .arw,.cs-card .link .arw,.ins-cta .arw{transition:none}
   .btn:hover .arw,.card:hover .link .arw,.cs-card:hover .link .arw,.ins-card:hover .ins-cta .arw{transform:none}
 }

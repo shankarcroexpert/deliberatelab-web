@@ -13,6 +13,12 @@ var NEWSLETTER_ENDPOINT = "";
    if you want that. Leave blank until wired; falls back to a mailto. */
 var CONTACT_FORM_ENDPOINT = "";
 
+/* Optional "email me this" endpoint for the Testing Tool Advisor
+   (tool-advisor.html). There's no hard email wall — results always show
+   first — this only fires if someone opts in afterwards. Leave blank until
+   wired; falls back to opening a mailto draft addressed to their own inbox. */
+var TOOL_ADVISOR_ENDPOINT = "";
+
 (function(){
   // sticky-nav hairline on scroll
   var hdr=document.getElementById('hdr');

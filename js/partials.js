@@ -69,6 +69,7 @@
           '<div class="f-col">' +
             '<h4>Company</h4>' +
             '<a href="tools.html">Free Assessment</a>' +
+            '<a href="tool-advisor.html">Testing Tool Advisor</a>' +
             '<a href="resources.html">Resources</a>' +
             '<a href="about.html">About</a>' +
             '<a href="method.html">Method</a>' +
